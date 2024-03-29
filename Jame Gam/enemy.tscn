@@ -1,0 +1,108 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvxsudxuou4nu"]
+
+[ext_resource type="Script" path="res://detectSmoke.gd" id="2_jclty"]
+[ext_resource type="Texture2D" uid="uid://djhofxdh58e1n" path="res://art/zombiev1.png" id="2_maodd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rmb8"]
+atlas = ExtResource("2_maodd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hef0"]
+atlas = ExtResource("2_maodd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrkgk"]
+atlas = ExtResource("2_maodd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnm1u"]
+atlas = ExtResource("2_maodd")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kghol"]
+atlas = ExtResource("2_maodd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ts42"]
+atlas = ExtResource("2_maodd")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wcfde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rmb8")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hef0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrkgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnm1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kghol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ts42")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okxi6"]
+size = Vector2(8, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x43ys"]
+size = Vector2(131.5, 18)
+
+[sub_resource type="Gradient" id="Gradient_wrx0f"]
+offsets = PackedFloat32Array(0.504348, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hi4qr"]
+gradient = SubResource("Gradient_wrx0f")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.527607, 0.739264)
+fill_to = Vector2(0.527607, 1)
+
+[node name="Enemy" type="Area2D" groups=["enemy"]]
+script = ExtResource("2_jclty")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_wcfde")
+animation = &"running"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_okxi6")
+
+[node name="Detect player" type="Area2D" parent="."]
+
+[node name="detect" type="CollisionShape2D" parent="Detect player"]
+position = Vector2(0.25, -2)
+shape = SubResource("RectangleShape2D_x43ys")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_hi4qr")
+texture_scale = 2.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="Detect player" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="Detect player" to="." method="_on_detect_player_body_exited"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://drfc2ypo6rdu3"]
+
+[ext_resource type="Texture2D" uid="uid://caucrdy46t27k" path="res://art/mirrorv1.png" id="1_3lpqw"]
+[ext_resource type="Script" path="res://mirror.gd" id="1_x0d5u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v271"]
+size = Vector2(7.25, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bor3l"]
+size = Vector2(47, 18)
+
+[sub_resource type="Gradient" id="Gradient_7ftyv"]
+offsets = PackedFloat32Array(0.504348, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w23e6"]
+gradient = SubResource("Gradient_7ftyv")
+width = 16
+height = 32
+fill = 1
+fill_from = Vector2(0.527607, 0.739264)
+fill_to = Vector2(0.527607, 1)
+
+[node name="Mirror" type="RigidBody2D" groups=["mirror"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_x0d5u")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_3lpqw")
+hframes = 5
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.375, 0)
+shape = SubResource("RectangleShape2D_1v271")
+
+[node name="detectPlayer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
+shape = SubResource("RectangleShape2D_bor3l")
+
+[node name="portal" type="Area2D" parent="." groups=["mirror"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal"]
+position = Vector2(-0.375, 0)
+shape = SubResource("RectangleShape2D_1v271")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_w23e6")
+texture_scale = 2.0
+
+[connection signal="body_entered" from="detectPlayer" to="." method="_on_area_2d_body_entered"]

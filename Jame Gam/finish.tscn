@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://hh1ot0hvnjtb"]
+
+[ext_resource type="Texture2D" uid="uid://caucrdy46t27k" path="res://art/mirrorv1.png" id="1_4rmvd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_advbx"]
+size = Vector2(12, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txeij"]
+atlas = ExtResource("1_4rmvd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcf1i"]
+atlas = ExtResource("1_4rmvd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cru07"]
+atlas = ExtResource("1_4rmvd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jq0tf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txeij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcf1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cru07")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ydfyv"]
+offsets = PackedFloat32Array(0.504348, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6lg4k"]
+gradient = SubResource("Gradient_ydfyv")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.97546, 0.54908)
+fill_to = Vector2(0.233129, 0.696319)
+
+[node name="Finish" type="Area2D" groups=["finish"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_advbx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jq0tf")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-10, 1)
+texture = SubResource("GradientTexture2D_6lg4k")
+texture_scale = 1.5

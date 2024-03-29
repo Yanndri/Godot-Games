@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbx5la7eo5cml"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_c6id7"]
+[ext_resource type="PackedScene" uid="uid://bn4vrvabd0jkc" path="res://smoke.tscn" id="2_te0cl"]
+[ext_resource type="Texture2D" uid="uid://donufet7wbtpx" path="res://art/ENv1.png" id="3_hd63v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iblko"]
+size = Vector2(11, 15.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r78rp"]
+atlas = ExtResource("3_hd63v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b7jn"]
+atlas = ExtResource("3_hd63v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ajt"]
+atlas = ExtResource("3_hd63v")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2fa4"]
+atlas = ExtResource("3_hd63v")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jpqej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r78rp")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b7jn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ajt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2fa4")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvqis"]
+size = Vector2(11, 15.5)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_c6id7")
+smoke = ExtResource("2_te0cl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_iblko")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jpqej")
+animation = &"attack"
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../../Camera2D")
+
+[node name="detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_wvqis")
+
+[connection signal="area_entered" from="detect" to="." method="_on_detect_area_entered"]

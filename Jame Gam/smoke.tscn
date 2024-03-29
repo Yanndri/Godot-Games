@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn4vrvabd0jkc"]
+
+[ext_resource type="Material" uid="uid://cu84mi0fgpgdv" path="res://Particles/BlackSmoke.tres" id="1_selbe"]
+[ext_resource type="Script" path="res://GPUParticles2D.gd" id="2_tcdbp"]
+
+[sub_resource type="Gradient" id="Gradient_loavr"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2yix2"]
+gradient = SubResource("Gradient_loavr")
+
+[node name="GPUParticles2D" type="GPUParticles2D" groups=["smoke"]]
+position = Vector2(3, 0)
+emitting = false
+amount = 50
+process_material = ExtResource("1_selbe")
+texture = SubResource("GradientTexture2D_2yix2")
+lifetime = 0.1
+one_shot = true
+explosiveness = 0.38
+randomness = 1.0
+script = ExtResource("2_tcdbp")
+
+[node name="smokeArea" type="Area2D" parent="." groups=["smoke"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="smokeArea"]
+position = Vector2(35.1417, 5.46875)
+scale = Vector2(1.28348, 0.994318)
+build_mode = 1
+polygon = PackedVector2Array(-0.889534, -17.5686, -27.38, -5.5, -0.889534, 3.55143)
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="area_entered" from="smokeArea" to="smokeArea" method="_on_area_entered"]
