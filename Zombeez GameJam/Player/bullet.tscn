@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgwmxtrunvd3k"]
+
+[ext_resource type="Script" path="res://Player/Bullet.gd" id="1_f6w8g"]
+[ext_resource type="Texture2D" uid="uid://hp4apwpjwvwd" path="res://Art/Zombeez Assets/bullets/bullet_1_1.png" id="2_6uc2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bd6x"]
+size = Vector2(6, 4)
+
+[node name="Bullet" type="RigidBody2D"]
+script = ExtResource("1_f6w8g")
+
+[node name="BulletType" type="Sprite2D" parent="."]
+texture = ExtResource("2_6uc2p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2bd6x")
+
+[node name="Bullet_Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Bullet_Timer" to="." method="_on_bullet_timer_timeout"]

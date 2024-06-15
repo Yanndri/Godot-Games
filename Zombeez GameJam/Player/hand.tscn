@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d02sn63nwf610"]
+
+[ext_resource type="Texture2D" uid="uid://0v2p6yt7o463" path="res://Art/Zombeez Assets/Characters Edited/weapon_icon_1.png" id="1_gnuvc"]
+[ext_resource type="Script" path="res://Hand.gd" id="2_efk0r"]
+[ext_resource type="Texture2D" path="res://Art/Zombeez Assets/character attacks/weapon_icon_1_1/weapon_icon_1_1.png" id="3_68oki"]
+
+[node name="Hand" type="Sprite2D"]
+position = Vector2(0, 34)
+texture = ExtResource("1_gnuvc")
+offset = Vector2(20, -3)
+script = ExtResource("2_efk0r")
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(19, -4)
+texture = ExtResource("3_68oki")
+
+[node name="Barrel" type="Marker2D" parent="Gun"]
+position = Vector2(10, -4)
+
+[node name="rate_of_fire" type="Timer" parent="."]

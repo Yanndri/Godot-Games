@@ -1,0 +1,180 @@
+[gd_scene load_steps=21 format=3 uid="uid://bvjm4p2eqvhix"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_dtw8s"]
+[ext_resource type="Texture2D" uid="uid://cdga2v27ofxcp" path="res://Art/Zombeez Assets/Characters Edited/character1_idle_export.png" id="2_0rfl4"]
+[ext_resource type="Texture2D" uid="uid://d60hwdasfmf5" path="res://Art/Zombeez Assets/Tileset/amusement-tile_01-sheet.png" id="3_82oko"]
+[ext_resource type="Texture2D" uid="uid://dchy535inayhm" path="res://Art/Zombeez Assets/Characters Edited/character1_jump-sheet.png" id="3_7075t"]
+[ext_resource type="Texture2D" uid="uid://0v2p6yt7o463" path="res://Art/Zombeez Assets/Characters Edited/weapon_icon_1.png" id="3_am53r"]
+[ext_resource type="Texture2D" uid="uid://dp5mf77bwjfe7" path="res://Art/Zombeez Assets/Characters Edited/character1_run-sheet.png" id="3_pqrrn"]
+[ext_resource type="Script" path="res://Hand.gd" id="4_cbmbl"]
+[ext_resource type="Texture2D" uid="uid://cnbf6iat62va1" path="res://icon.svg" id="6_l8gkp"]
+[ext_resource type="Texture2D" uid="uid://bdkcc1lh8bgse" path="res://Art/Zombeez Assets/weapons/weapon_icon_1_1.png" id="7_5oq6b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joocu"]
+size = Vector2(16, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5u6j"]
+atlas = ExtResource("2_0rfl4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8eys"]
+atlas = ExtResource("3_7075t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtoo6"]
+atlas = ExtResource("3_7075t")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvaoy"]
+atlas = ExtResource("3_pqrrn")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pee2b"]
+atlas = ExtResource("3_pqrrn")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4hex"]
+atlas = ExtResource("3_pqrrn")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfwmt"]
+atlas = ExtResource("3_pqrrn")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xryqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5u6j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_d8eys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtoo6")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvaoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pee2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4hex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfwmt")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fojta"]
+texture = ExtResource("3_82oko")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 47.5, -3.5, 34.5, 35.5, 55.5, 64, -64, 64)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40.5, -3.5, 64, -3.5, 64, 64, -40.5, 64, -11.5, 38.5)
+
+[sub_resource type="TileSet" id="TileSet_vp6vk"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_fojta")
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_dtw8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 33.5)
+shape = SubResource("RectangleShape2D_joocu")
+
+[node name="Character" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_xryqy")
+animation = &"jump"
+frame = 1
+frame_progress = 1.0
+
+[node name="Hand" type="Sprite2D" parent="Player"]
+position = Vector2(0, 34)
+texture = ExtResource("3_am53r")
+offset = Vector2(20, -3)
+script = ExtResource("4_cbmbl")
+
+[node name="Gun" type="Sprite2D" parent="Player/Hand"]
+position = Vector2(19, -4)
+texture = ExtResource("7_5oq6b")
+
+[node name="Barrel" type="Marker2D" parent="Player/Hand/Gun"]
+position = Vector2(10, -4)
+
+[node name="rate_of_fire" type="Timer" parent="Player/Hand"]
+
+[node name="Marker2D" type="Marker2D" parent="Player"]
+visible = false
+
+[node name="Icon" type="Sprite2D" parent="Player/Marker2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_l8gkp")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_vp6vk")
+format = 2
+layer_0/name = "Ground"
+layer_0/z_index = -100
+layer_0/tile_data = PackedInt32Array(65535, 131074, 0, 0, 2, 0, 65531, 2, 1, 65532, 65538, 1, 65534, 2, 1, 65533, 131074, 0, 1, 2, 2, 4, 196610, 0, 5, 196610, 1, 2, 196610, 1, 3, 131074, 1, 65530, 196610, 1, 65528, 131074, 1, 65529, 65538, 2, 65527, 196610, 0, 6, 196610, 1, 7, 65538, 0)
