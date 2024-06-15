@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://vudc4jn4w4gw"]
+
+[ext_resource type="Shader" path="res://Resources/shaderLava.gdshader" id="1_felyg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o5cbr"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3hbpy"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_o5cbr")
+
+[resource]
+shader = ExtResource("1_felyg")
+shader_parameter/timeScaleFactor = 0.04
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_3hbpy")

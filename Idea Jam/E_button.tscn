@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmkcysxwxo61d"]
+
+[ext_resource type="Theme" uid="uid://b3j10h76xfdqt" path="res://Resources/DefaultTheme.tres" id="1_xactq"]
+[ext_resource type="Script" path="res://E.gd" id="2_k8qn1"]
+
+[node name="E" type="PanelContainer"]
+offset_right = 30.0
+offset_bottom = 30.0
+theme = ExtResource("1_xactq")
+script = ExtResource("2_k8qn1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
