@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bvjm4p2eqvhix"]
+[gd_scene load_steps=48 format=3 uid="uid://bvjm4p2eqvhix"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_dtw8s"]
 [ext_resource type="Texture2D" uid="uid://cdga2v27ofxcp" path="res://Art/Zombeez Assets/Characters Edited/character1_idle_export.png" id="2_0rfl4"]
@@ -9,16 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://cnbf6iat62va1" path="res://icon.svg" id="6_l8gkp"]
 [ext_resource type="Script" path="res://Barrel.gd" id="8_6qe37"]
 [ext_resource type="Script" path="res://Gun.gd" id="8_nhtqo"]
-[ext_resource type="Resource" uid="uid://bk23t3idmeto7" path="res://Resources/pistol.tres" id="8_ro8fj"]
-[ext_resource type="Resource" uid="uid://cdlnc210jpua5" path="res://Resources/shotgun.tres" id="9_th7us"]
 [ext_resource type="Texture2D" uid="uid://cnhl5fjqkb34u" path="res://Art/Zombeez Assets/effects/firing_edited/firing 3_2.png" id="9_u4dow"]
-[ext_resource type="Resource" uid="uid://71eml7ik5rjt" path="res://Resources/uzi.tres" id="10_mdqbl"]
 [ext_resource type="Texture2D" uid="uid://7b802sqka63c" path="res://Art/Zombeez Assets/effects/firing_edited/firing 1_1.png" id="10_oc4gy"]
 [ext_resource type="Theme" uid="uid://03asy68rfoqm" path="res://Resources/MenuTheme_v1.tres" id="10_vcsxl"]
 [ext_resource type="Script" path="res://GUI weapon.gd" id="11_0rvjp"]
-[ext_resource type="Resource" uid="uid://djtxghn7n8ar6" path="res://Resources/ak.tres" id="11_jsh42"]
 [ext_resource type="Texture2D" uid="uid://b3l1wnna0sjjb" path="res://Art/Zombeez Assets/effects/firing_edited/firing 3_3.png" id="11_uqt2e"]
-[ext_resource type="Resource" uid="uid://ck04pc26ggywb" path="res://Resources/machine_gun.tres" id="12_6fs0q"]
 [ext_resource type="Texture2D" uid="uid://djxyebmnh2w4n" path="res://Art/Zombeez Assets/effects/firing_edited/firing 2_3.png" id="12_hkdoi"]
 [ext_resource type="Texture2D" uid="uid://cepcdou21mh4d" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_1_1.png" id="13_ick73"]
 [ext_resource type="Theme" uid="uid://du6dvda4fdd25" path="res://Resources/GUI_inventory.tres" id="13_lccn7"]
@@ -29,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://u1jcx67d7liw" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_3_1.png" id="15_qyhrb"]
 [ext_resource type="Texture2D" uid="uid://d1x6sfw6v3xdb" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_3_2.png" id="16_mo1td"]
 [ext_resource type="Texture2D" uid="uid://357klbte6lnb" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_3_3.png" id="17_i2kip"]
-[ext_resource type="PackedScene" uid="uid://b5d0u5mgypfb0" path="res://Enemies/zombie_boss_2.tscn" id="30_n50yh"]
+[ext_resource type="Theme" uid="uid://b7ni6q0hujtrg" path="res://Resources/reloading.tres" id="21_tcrul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joocu"]
 size = Vector2(16, 45)
@@ -249,8 +244,7 @@ texture_region_size = Vector2i(128, 128)
 
 [sub_resource type="TileSet" id="TileSet_vp6vk"]
 tile_size = Vector2i(128, 128)
-physics_layer_0/collision_layer = 129
-physics_layer_0/collision_mask = 0
+physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_fojta")
 
 [node name="Main" type="Node2D"]
@@ -260,8 +254,7 @@ offset = Vector2(0, 10)
 
 [node name="Bullet Parent" type="Marker2D" parent="."]
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-collision_layer = 25
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_dtw8s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -281,13 +274,8 @@ offset = Vector2(20, -3)
 
 [node name="Gun" type="Sprite2D" parent="Player/Hand" node_paths=PackedStringArray("bullet_parent")]
 position = Vector2(20, -2)
-texture = ExtResource("15_qyhrb")
+texture = ExtResource("13_ick73")
 script = ExtResource("8_nhtqo")
-pistol = ExtResource("8_ro8fj")
-shotgun = ExtResource("9_th7us")
-uzi = ExtResource("10_mdqbl")
-ak = ExtResource("11_jsh42")
-machine_gun = ExtResource("12_6fs0q")
 bullet_parent = NodePath("../../../Bullet Parent")
 
 [node name="Barrel" type="Marker2D" parent="Player/Hand/Gun"]
@@ -363,6 +351,7 @@ layout_mode = 2
 
 [node name="Slot1" type="Button" parent="CanvasLayer/GUI inventory/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("21_tcrul")
 disabled = true
 toggle_mode = true
 button_group = ExtResource("15_2mh1o")
@@ -391,8 +380,5 @@ layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("15_2mh1o")
 icon = ExtResource("17_i2kip")
-
-[node name="Zombie_boss2" parent="." instance=ExtResource("30_n50yh")]
-position = Vector2(75, -89)
 
 [connection signal="animation_finished" from="Player/Hand/Gun/Barrel/firing_effects" to="Player/Hand/Gun/Barrel" method="_on_firing_effects_animation_finished"]

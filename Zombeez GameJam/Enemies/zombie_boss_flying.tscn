@@ -1,0 +1,118 @@
+[gd_scene load_steps=18 format=3 uid="uid://027ndnwntndo"]
+
+[ext_resource type="Script" path="res://Enemies/zombie_boss_flying.gd" id="1_u8xb5"]
+[ext_resource type="Texture2D" uid="uid://dlkpbfw84ha3d" path="res://Art/Zombeez Assets/zombies edited/boss_2_second_life_attack.png" id="1_y7s3o"]
+[ext_resource type="Texture2D" uid="uid://bhuiyk0uam3k8" path="res://Art/Zombeez Assets/zombies edited/boss_2_second_life_roaming.png" id="2_wam4s"]
+[ext_resource type="PackedScene" uid="uid://dgwcty1fsydx8" path="res://Enemies/attack.tscn" id="4_lt868"]
+[ext_resource type="PackedScene" uid="uid://c5fl0pqc66hjb" path="res://Enemies/enemy_detection.tscn" id="5_itie5"]
+[ext_resource type="PackedScene" uid="uid://wplbjmfh4l3a" path="res://Enemies/health.tscn" id="6_2v1b8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0lej"]
+size = Vector2(28, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw73w"]
+atlas = ExtResource("1_y7s3o")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inrwy"]
+atlas = ExtResource("1_y7s3o")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f687t"]
+atlas = ExtResource("1_y7s3o")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiv54"]
+atlas = ExtResource("2_wam4s")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcbpq"]
+atlas = ExtResource("2_wam4s")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4gd4"]
+atlas = ExtResource("2_wam4s")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur5bg"]
+atlas = ExtResource("2_wam4s")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aiwsr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw73w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inrwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f687t")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiv54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcbpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4gd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur5bg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_axj3c"]
+radius = 282.502
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8po3"]
+size = Vector2(40, 54)
+
+[node name="zombie_boss_flying" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_u8xb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, 13.5)
+shape = SubResource("RectangleShape2D_n0lej")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aiwsr")
+autoplay = "default"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="enemy_detection" parent="." instance=ExtResource("5_itie5")]
+
+[node name="CollisionShape2D" parent="enemy_detection/detect_player" index="0"]
+shape = SubResource("CircleShape2D_axj3c")
+
+[node name="health" parent="." instance=ExtResource("6_2v1b8")]
+
+[node name="CollisionShape2D" parent="health/detect_attacks" index="0"]
+position = Vector2(6, 14)
+shape = SubResource("RectangleShape2D_u8po3")
+
+[node name="attack" parent="." instance=ExtResource("4_lt868")]
+position = Vector2(0, 3)
+
+[node name="area_attack" parent="attack" index="0"]
+position = Vector2(7, 23)
+
+[node name="attack_range" parent="attack" index="1"]
+position = Vector2(7, 23)
+
+[editable path="enemy_detection"]
+[editable path="health"]
+[editable path="attack"]

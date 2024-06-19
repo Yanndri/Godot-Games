@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgwcty1fsydx8"]
+
+[ext_resource type="Script" path="res://Enemies/attack.gd" id="1_yefnm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn2ks"]
+size = Vector2(68, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wov52"]
+size = Vector2(68, 37)
+
+[node name="attack" type="Node2D"]
+script = ExtResource("1_yefnm")
+
+[node name="area_attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_attack"]
+position = Vector2(-26, -0.5)
+shape = SubResource("RectangleShape2D_yn2ks")
+debug_color = Color(0.529412, 0.411765, 1, 0.419608)
+
+[node name="attack_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_range"]
+position = Vector2(-26, -0.5)
+shape = SubResource("RectangleShape2D_wov52")
+debug_color = Color(0.164706, 0.517647, 1, 0.419608)
+
+[connection signal="body_entered" from="area_attack" to="." method="_on_area_attack_body_entered"]
+[connection signal="body_exited" from="area_attack" to="." method="_on_area_attack_body_exited"]
+[connection signal="body_entered" from="attack_range" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="attack_range" to="." method="_on_attack_range_body_exited"]

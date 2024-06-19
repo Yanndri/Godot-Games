@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ck04pc26ggywb"]
+
+[ext_resource type="Texture2D" uid="uid://357klbte6lnb" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_3_3.png" id="1_6f6ca"]
+[ext_resource type="Texture2D" uid="uid://dttphi0rm0sor" path="res://Art/Zombeez Assets/bullets/bullet_3_3.png" id="1_6sbmm"]
+
+[sub_resource type="GDScript" id="GDScript_nm65o"]
+script/source = "extends Resource
+
+@export var damage : int
+@export var weight : float# weight of the gun that will slow the player 
+@export var power : float# gun knockback and damage
+@export var rate_of_fire : float # seconds
+@export var max_ammo : int
+@export var spread : float # how random the bullets direction is
+@export var bullet_life_time : float
+@export var bullet_count : int
+@export var texture : Texture2D
+@export var bullet : Texture2D
+
+func bullets_remaining():
+	return bullet_count
+"
+
+[resource]
+resource_local_to_scene = true
+script = SubResource("GDScript_nm65o")
+damage = 20
+weight = 5.0
+power = 4.0
+rate_of_fire = 0.05
+max_ammo = 300
+spread = 0.4
+bullet_life_time = 0.3
+bullet_count = 300
+texture = ExtResource("1_6f6ca")
+bullet = ExtResource("1_6sbmm")
