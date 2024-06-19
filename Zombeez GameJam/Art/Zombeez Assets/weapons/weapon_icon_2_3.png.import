@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cepcdou21mh4d"
-path="res://.godot/imported/weapon_icon_1_1.png-f136fb77370f7592e402da1512468391.ctex"
+uid="uid://dlgvt8ci8do03"
+path="res://.godot/imported/weapon_icon_2_3.png-fe3101dd7718870827161acebe1ecd77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Zombeez Assets/weapons Edited/weapon_icon_1_1.png"
-dest_files=["res://.godot/imported/weapon_icon_1_1.png-f136fb77370f7592e402da1512468391.ctex"]
+source_file="res://Art/Zombeez Assets/weapons Edited/weapon_icon_2_3.png"
+dest_files=["res://.godot/imported/weapon_icon_2_3.png-fe3101dd7718870827161acebe1ecd77.ctex"]
 
 [params]
 
