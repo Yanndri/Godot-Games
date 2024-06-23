@@ -12,7 +12,7 @@ func _ready():
 	add_child(bullet_timer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if bullet_timer.time_left == 0:
 		queue_free()
 
@@ -20,4 +20,3 @@ func shoot(bullet_life_time, bullet_type):
 	bullet_sprite.texture = bullet_type
 	bullet_timer.wait_time = bullet_life_time
 	bullet_timer.start()
-

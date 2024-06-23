@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5fl0pqc66hjb"]
+
+[ext_resource type="Script" path="res://Methods/detection.gd" id="1_drsqq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qtyc"]
+size = Vector2(1161, 62)
+
+[node name="detection" type="Node2D"]
+z_index = -100
+script = ExtResource("1_drsqq")
+
+[node name="detect_player" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player"]
+position = Vector2(1.5, 21)
+shape = SubResource("RectangleShape2D_7qtyc")
+debug_color = Color(0.592157, 0.54902, 0, 0.419608)
+
+[connection signal="body_entered" from="detect_player" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="detect_player" to="." method="_on_detect_player_body_exited"]

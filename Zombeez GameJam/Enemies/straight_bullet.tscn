@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://3pwghoilji4e"]
+
+[ext_resource type="Script" path="res://straight_bullet.gd" id="1_hii0x"]
+[ext_resource type="Texture2D" uid="uid://d2dwch37ch8hv" path="res://Art/Zombeez Assets/ui+drone/drone/drone_bullet.png" id="2_4vjo7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5sas"]
+size = Vector2(8, 6)
+
+[node name="straight_bullet" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hii0x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y5sas")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4vjo7")

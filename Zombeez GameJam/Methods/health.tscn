@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://wplbjmfh4l3a"]
+
+[ext_resource type="Script" path="res://Methods/health.gd" id="1_dtf2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7dob"]
+size = Vector2(41, 58)
+
+[node name="health" type="Node2D"]
+z_index = -100
+script = ExtResource("1_dtf2o")
+
+[node name="detect_attacks" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_attacks"]
+position = Vector2(2.5, 16)
+shape = SubResource("RectangleShape2D_q7dob")
+debug_color = Color(1, 0, 0.133333, 0.419608)
+
+[connection signal="body_entered" from="detect_attacks" to="." method="_on_detect_attacks_body_entered"]

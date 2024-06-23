@@ -15,7 +15,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var rate_of_fire = Timer.new()
 
-var knockback_resistance = 0.05
+var knockback_resistance = 0.1
 
 var shooting : bool
 

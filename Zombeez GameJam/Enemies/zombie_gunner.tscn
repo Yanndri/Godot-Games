@@ -1,0 +1,265 @@
+[gd_scene load_steps=18 format=3 uid="uid://c5xg41upmh5x6"]
+
+[ext_resource type="Script" path="res://Enemies/zombie_gunner.gd" id="1_wf3o7"]
+[ext_resource type="Texture2D" uid="uid://cpxj01poeiso7" path="res://Art/Zombeez Assets/zombies edited/zombie_gunner_walk-sheet.png" id="2_d6wh2"]
+[ext_resource type="Texture2D" uid="uid://du550v1oe8ijr" path="res://Art/Zombeez Assets/zombies edited/zombie_gunner_attack.png" id="2_h2hug"]
+[ext_resource type="Texture2D" uid="uid://ifq213j0k44r" path="res://Art/Zombeez Assets/zombies edited/zombie_gunner_hand.png" id="3_0c4k6"]
+[ext_resource type="Script" path="res://Enemies/drone_gun.gd" id="4_867kv"]
+[ext_resource type="PackedScene" uid="uid://dgwcty1fsydx8" path="res://Methods/attack.tscn" id="6_lnmmp"]
+[ext_resource type="PackedScene" uid="uid://c5fl0pqc66hjb" path="res://Methods/detection.tscn" id="7_1yn8l"]
+[ext_resource type="PackedScene" uid="uid://wplbjmfh4l3a" path="res://Methods/health.tscn" id="8_sqr5h"]
+[ext_resource type="Texture2D" uid="uid://cnbf6iat62va1" path="res://icon.svg" id="9_ccst0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isj6g"]
+size = Vector2(34, 57)
+
+[sub_resource type="Animation" id="Animation_e7t3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_d6wh2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("zombie_texture/drone_gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_k3jri"]
+resource_name = "attack"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_h2hug")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("zombie_texture/drone_gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_t1xna"]
+resource_name = "walking"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_d6wh2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("zombie_texture/drone_gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 22), Vector2(2, 19), Vector2(3, 23), Vector2(0, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_orbua"]
+_data = {
+"RESET": SubResource("Animation_e7t3h"),
+"attack": SubResource("Animation_k3jri"),
+"walking": SubResource("Animation_t1xna")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_affb1"]
+radius = 473.466
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4db2"]
+radius = 299.483
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4vbk"]
+radius = 507.001
+
+[node name="zombie_gunner" type="CharacterBody2D" node_paths=PackedStringArray("zombie_animation", "zombie_sprite")]
+script = ExtResource("1_wf3o7")
+zombie_animation = NodePath("AnimationPlayer")
+zombie_sprite = NodePath("zombie_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 3)
+shape = SubResource("RectangleShape2D_isj6g")
+
+[node name="zombie_texture" type="Sprite2D" parent="."]
+position = Vector2(-7, -25)
+texture = ExtResource("2_d6wh2")
+flip_h = true
+hframes = 4
+
+[node name="drone_gun" type="Sprite2D" parent="zombie_texture"]
+unique_name_in_owner = true
+position = Vector2(1, 22)
+texture = ExtResource("3_0c4k6")
+offset = Vector2(20, 0)
+flip_h = true
+script = ExtResource("4_867kv")
+
+[node name="barrel" type="Marker2D" parent="zombie_texture/drone_gun"]
+position = Vector2(39, 0)
+
+[node name="bullets" type="Marker2D" parent="zombie_texture/drone_gun/barrel"]
+top_level = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_orbua")
+}
+autoplay = "walking"
+
+[node name="attack" parent="." instance=ExtResource("6_lnmmp")]
+unique_name_in_owner = true
+position = Vector2(15, -25)
+
+[node name="area_attack" parent="attack" index="0"]
+visible = false
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="attack/area_attack" index="0"]
+visible = false
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_affb1")
+
+[node name="CollisionShape2D" parent="attack/attack_range" index="0"]
+position = Vector2(0, 0)
+rotation = 0.0560258
+shape = SubResource("CircleShape2D_g4db2")
+
+[node name="detection" parent="." instance=ExtResource("7_1yn8l")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" parent="detection/detect_player" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_y4vbk")
+
+[node name="health" parent="." instance=ExtResource("8_sqr5h")]
+unique_name_in_owner = true
+position = Vector2(-9, -13)
+
+[node name="aim_direction" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2, -25)
+
+[node name="Icon" type="Sprite2D" parent="aim_direction"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_ccst0")
+
+[editable path="attack"]
+[editable path="detection"]
+[editable path="health"]

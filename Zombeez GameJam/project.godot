@@ -19,7 +19,8 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=576
 window/size/viewport_height=324
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/canvas_textures/default_texture_filter=0
 
 [input]
 
@@ -51,10 +52,10 @@ down={
 [layer_names]
 
 2d_physics/layer_1="Ground"
-2d_physics/layer_3="Player_Attacks"
-2d_physics/layer_4="Detect_Player"
-2d_physics/layer_5="Enemy_Attacks"
-2d_physics/layer_6="Detect_Enemies"
+2d_physics/layer_3="detect_Player_Attacks"
+2d_physics/layer_4="Player_Body"
+2d_physics/layer_5="detect_Enemy_Attacks"
+2d_physics/layer_6="Enemies"
 2d_physics/layer_8="Ground"
 
 [rendering]

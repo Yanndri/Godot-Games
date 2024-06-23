@@ -1,15 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgwmxtrunvd3k"]
+[gd_scene load_steps=5 format=3 uid="uid://cgwmxtrunvd3k"]
 
 [ext_resource type="Script" path="res://Player/bullet.gd" id="1_g8ifc"]
 [ext_resource type="Texture2D" uid="uid://hp4apwpjwvwd" path="res://Art/Zombeez Assets/bullets/bullet_1_1.png" id="2_6uc2p"]
+[ext_resource type="PackedScene" uid="uid://c68hi8d54vu36" path="res://Graphics and UI/trail_effect.tscn" id="3_xddle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bd6x"]
 size = Vector2(6, 4)
 
-[node name="Bullet" type="RigidBody2D" groups=["attack"]]
+[node name="Bullet" type="RigidBody2D" groups=["attack", "bullet"]]
 collision_layer = 4
 collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource("1_g8ifc")
+
+[node name="Trail" parent="." node_paths=PackedStringArray("parent_texture") instance=ExtResource("3_xddle")]
+show_behind_parent = true
+top_level = true
+z_index = -100
+width = 3.0
+default_color = Color(0.960784, 0.164706, 0.0862745, 1)
+max_length = 2
+parent_texture = NodePath("../BulletType")
 
 [node name="BulletType" type="Sprite2D" parent="."]
 texture = ExtResource("2_6uc2p")
