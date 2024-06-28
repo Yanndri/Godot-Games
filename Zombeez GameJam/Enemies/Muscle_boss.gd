@@ -4,7 +4,9 @@ const SPEED = 30.0
 
 @export var zombie_sprite : Sprite2D
 @export var zombie_animation : AnimationPlayer
+@export var hit_flash_effect : AnimationPlayer
 @export var zombie_flying : PackedScene
+@export var enemy_data : Resource
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -18,6 +20,8 @@ var can_move : bool = true
 var direction = 1
 var player_body 
 var spawn_location : Vector2
+
+var defense = 20
 
 func _ready():
 	player_body = Vector2(500, 0)
@@ -67,24 +71,31 @@ func player_is_detected(body, TrueOrFalse):
 	player_body = body
 	player_detected = TrueOrFalse
 	if TrueOrFalse == false && can_update_animation:
-		zombie_animation.queue("RESET")
-		await get_tree().create_timer(2).timeout
 		zombie_animation.queue("running")
 		can_move = true
 		is_near_spawn = false # will move if it is not near its spawn location
 
 func attack(TrueOrFalse):
 	attacking_player = TrueOrFalse
-	print("attacking player")
+	#print("attacking player")
 
 func dealt_damage():
-	print("damaged player")
+	#print("damaged player")
+	pass
 
 func damage_player():
 	if zombie_animation.current_animation == "attack": # check if the frame is on the attack frame
 		return true
 
-func took_damage(_damage):
+func took_damage(damage):
+	damage = floor(damage / enemy_data.ARMOR)
+	enemy_data.HEALTH -= damage
+	hit_flash_effect.play("hit")
+	if enemy_data.HEALTH <= 0:
+		death()
+	return damage
+
+func death():
 	zombie_animation.play("death")
 
 func change_facing_direction():
@@ -96,24 +107,14 @@ func change_facing_direction():
 func update_animation():
 	if zombie_animation.current_animation == "death":
 		can_update_animation = false
-		can_move = false
-		
-		# disable area detections
-		get_node("%detection").turn_off() 
-		get_node("%attack").turn_off()
-		get_node("%health").turn_off()
-		for i in range(32): 
-			#print(get_collision_mask_value(i + 1))
-			if get_collision_mask_value(i + 1) == true || get_collision_layer_value(i + 1) == true:
-				set_collision_mask_value(i + 1, false)
-				set_collision_layer_value(i + 1, false)
-		set_collision_mask_value(8, true)
+		set_process(false)
+		set_physics_process(false)
 		
 		await get_tree().create_timer(3).timeout
 		zombie_animation.play("revive")
 		return
 	
-	if zombie_animation.current_animation == "attack":
+	elif zombie_animation.current_animation == "attack":
 		can_move = false
 	elif zombie_animation.current_animation == "running":
 		can_move = true
@@ -122,6 +123,7 @@ func update_animation():
 		zombie_animation.play("attack")
 
 func _on_animation_player_animation_finished(anim_name):
+	#print(anim_name)
 	if anim_name == "revive":
 		zombie_animation.play("detach")
 		var flying_zombie = zombie_flying.instantiate()
@@ -129,3 +131,4 @@ func _on_animation_player_animation_finished(anim_name):
 		get_parent().add_child(flying_zombie)
 	if anim_name == "attack":
 		zombie_animation.play("running")
+

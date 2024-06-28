@@ -1,0 +1,368 @@
+[gd_scene load_steps=26 format=3 uid="uid://cjn54skrbbg47"]
+
+[ext_resource type="Script" path="res://Enemies/Spitter_Zombie.gd" id="1_tms5c"]
+[ext_resource type="Resource" uid="uid://c6tyio4jhiiii" path="res://Resources/Enemies_data/Spitter_Zombie.tres" id="2_dmn2c"]
+[ext_resource type="PackedScene" uid="uid://ccyqgxsid7wh0" path="res://Graphics and UI/spit_particle.tscn" id="3_bnwmv"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_cyxos"]
+[ext_resource type="Texture2D" uid="uid://r6ocxx8v2njn" path="res://Art/Zombeez Assets/zombies edited/zombie1_walk01-sheet.png" id="4_maw4b"]
+[ext_resource type="Texture2D" uid="uid://dv87ctde2trdc" path="res://Art/Zombeez Assets/zombies edited/zombie1_death01-sheet.png" id="5_7whcm"]
+[ext_resource type="Texture2D" uid="uid://cf3ptsfx0fm1o" path="res://Art/Zombeez Assets/zombies edited/zombie1_spit_attack01-sheet.png" id="6_6neov"]
+[ext_resource type="PackedScene" uid="uid://c5fl0pqc66hjb" path="res://Methods/detection.tscn" id="7_gecw4"]
+[ext_resource type="PackedScene" uid="uid://dgwcty1fsydx8" path="res://Methods/attack.tscn" id="8_vs0a5"]
+[ext_resource type="PackedScene" uid="uid://wplbjmfh4l3a" path="res://Methods/health.tscn" id="9_trsga"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2bp5"]
+resource_local_to_scene = true
+shader = ExtResource("3_cyxos")
+shader_parameter/active = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbxkp"]
+size = Vector2(17, 46)
+
+[sub_resource type="Animation" id="Animation_ujyrc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_maw4b")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bohtq"]
+resource_name = "attack"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_6neov")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 1]
+}
+
+[sub_resource type="Animation" id="Animation_jidiw"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_7whcm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_j4jea"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_7whcm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g3113"]
+resource_name = "running"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_maw4b")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jafdj"]
+_data = {
+"RESET": SubResource("Animation_ujyrc"),
+"attack": SubResource("Animation_bohtq"),
+"death": SubResource("Animation_jidiw"),
+"idle": SubResource("Animation_j4jea"),
+"running": SubResource("Animation_g3113")
+}
+
+[sub_resource type="Animation" id="Animation_qgdwa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../zombie_texture:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cyxos")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../zombie_texture:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_h1h7f"]
+resource_name = "hit"
+length = 0.03
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../zombie_texture:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cyxos")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../zombie_texture:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l53mg"]
+_data = {
+"RESET": SubResource("Animation_qgdwa"),
+"hit": SubResource("Animation_h1h7f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4ihe"]
+size = Vector2(1161, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3p45"]
+size = Vector2(40, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_empbh"]
+radius = 191.532
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqggc"]
+size = Vector2(20, 46)
+
+[node name="Spitter_Zombie" type="CharacterBody2D" node_paths=PackedStringArray("zombie_sprite", "zombie_animation", "hit_flash_effect")]
+top_level = true
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_tms5c")
+zombie_sprite = NodePath("zombie_texture")
+zombie_animation = NodePath("AnimationPlayer")
+hit_flash_effect = NodePath("AnimationPlayer/Hit_Flash_Effect")
+enemy_data = ExtResource("2_dmn2c")
+spit_particle = ExtResource("3_bnwmv")
+
+[node name="zombie_texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_v2bp5")
+texture = ExtResource("4_maw4b")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 27)
+shape = SubResource("RectangleShape2D_pbxkp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jafdj")
+}
+
+[node name="Hit_Flash_Effect" type="AnimationPlayer" parent="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_l53mg")
+}
+
+[node name="detection" parent="." instance=ExtResource("7_gecw4")]
+unique_name_in_owner = true
+z_as_relative = false
+
+[node name="CollisionShape2D" parent="detection/detect_player" index="0"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_g4ihe")
+
+[node name="attack" parent="." instance=ExtResource("8_vs0a5")]
+unique_name_in_owner = true
+damage = 20
+
+[node name="area_attack" parent="attack" index="0"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="attack/area_attack" index="0"]
+position = Vector2(-21, 20.5)
+shape = SubResource("RectangleShape2D_o3p45")
+disabled = true
+
+[node name="CollisionShape2D" parent="attack/attack_range" index="0"]
+position = Vector2(0, 20)
+shape = SubResource("CircleShape2D_empbh")
+
+[node name="health" parent="." instance=ExtResource("9_trsga")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" parent="health/detect_attacks" index="0"]
+position = Vector2(-2, 27)
+shape = SubResource("RectangleShape2D_xqggc")
+
+[editable path="detection"]
+[editable path="attack"]
+[editable path="health"]

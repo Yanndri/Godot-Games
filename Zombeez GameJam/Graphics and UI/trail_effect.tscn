@@ -7,7 +7,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_ggucc"]
-colors = PackedColorArray(1, 0.180392, 0, 1, 0.25098, 0.25098, 0.25098, 0)
+offsets = PackedFloat32Array(0.00892857, 1)
+colors = PackedColorArray(1, 1, 1, 0.584314, 0.25098, 0.25098, 0.25098, 0)
 
 [sub_resource type="Gradient" id="Gradient_b782b"]
 colors = PackedColorArray(1, 0.266667, 0, 1, 1, 1, 1, 0)

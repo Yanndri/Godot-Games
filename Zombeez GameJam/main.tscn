@@ -1,107 +1,294 @@
-[gd_scene load_steps=55 format=3 uid="uid://bvjm4p2eqvhix"]
+[gd_scene load_steps=75 format=3 uid="uid://bvjm4p2eqvhix"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_7744f"]
+[ext_resource type="TileSet" uid="uid://deo1aop5g6cpj" path="res://Resources/main_enemies_tiles.tres" id="1_bei5k"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_dtw8s"]
-[ext_resource type="Texture2D" uid="uid://cdga2v27ofxcp" path="res://Art/Zombeez Assets/Characters Edited/character1_idle_export.png" id="2_0rfl4"]
-[ext_resource type="Texture2D" uid="uid://d60hwdasfmf5" path="res://Art/Zombeez Assets/Tileset/amusement-tile_01-sheet.png" id="3_82oko"]
+[ext_resource type="Material" uid="uid://bj85cxxs0ducq" path="res://Resources/smooth_pixel.tres" id="2_bbh73"]
+[ext_resource type="TileSet" uid="uid://by05ffhjt2rgl" path="res://Resources/main_tile_set.tres" id="2_ofdoo"]
 [ext_resource type="Texture2D" uid="uid://dchy535inayhm" path="res://Art/Zombeez Assets/Characters Edited/character1_jump-sheet.png" id="3_7075t"]
 [ext_resource type="Texture2D" uid="uid://0v2p6yt7o463" path="res://Art/Zombeez Assets/Characters Edited/weapon_icon_1.png" id="3_am53r"]
 [ext_resource type="Texture2D" uid="uid://dp5mf77bwjfe7" path="res://Art/Zombeez Assets/Characters Edited/character1_run-sheet.png" id="3_pqrrn"]
 [ext_resource type="Texture2D" uid="uid://cnbf6iat62va1" path="res://icon.svg" id="6_l8gkp"]
 [ext_resource type="Script" path="res://Player/Barrel.gd" id="8_6qe37"]
 [ext_resource type="Script" path="res://Player/Gun.gd" id="8_nhtqo"]
-[ext_resource type="Resource" uid="uid://bk23t3idmeto7" path="res://Resources/pistol.tres" id="8_ro8fj"]
-[ext_resource type="Resource" uid="uid://cdlnc210jpua5" path="res://Resources/shotgun.tres" id="9_th7us"]
+[ext_resource type="Resource" uid="uid://bk23t3idmeto7" path="res://Resources/Guns_data/pistol.tres" id="8_ro8fj"]
+[ext_resource type="Resource" uid="uid://cdlnc210jpua5" path="res://Resources/Guns_data/shotgun.tres" id="9_th7us"]
 [ext_resource type="Texture2D" uid="uid://cnhl5fjqkb34u" path="res://Art/Zombeez Assets/effects/firing_edited/firing 3_2.png" id="9_u4dow"]
-[ext_resource type="Resource" uid="uid://71eml7ik5rjt" path="res://Resources/uzi.tres" id="10_mdqbl"]
+[ext_resource type="Resource" uid="uid://71eml7ik5rjt" path="res://Resources/Guns_data/uzi.tres" id="10_mdqbl"]
 [ext_resource type="Texture2D" uid="uid://7b802sqka63c" path="res://Art/Zombeez Assets/effects/firing_edited/firing 1_1.png" id="10_oc4gy"]
 [ext_resource type="Theme" uid="uid://03asy68rfoqm" path="res://Resources/MenuTheme_v1.tres" id="10_vcsxl"]
 [ext_resource type="Script" path="res://Graphics and UI/GUI weapon.gd" id="11_0rvjp"]
-[ext_resource type="Resource" uid="uid://djtxghn7n8ar6" path="res://Resources/ak.tres" id="11_jsh42"]
+[ext_resource type="Resource" uid="uid://djtxghn7n8ar6" path="res://Resources/Guns_data/ak.tres" id="11_jsh42"]
 [ext_resource type="Texture2D" uid="uid://b3l1wnna0sjjb" path="res://Art/Zombeez Assets/effects/firing_edited/firing 3_3.png" id="11_uqt2e"]
-[ext_resource type="Resource" uid="uid://ck04pc26ggywb" path="res://Resources/machine_gun.tres" id="12_6fs0q"]
+[ext_resource type="Resource" uid="uid://ck04pc26ggywb" path="res://Resources/Guns_data/machine_gun.tres" id="12_6fs0q"]
 [ext_resource type="Texture2D" uid="uid://djxyebmnh2w4n" path="res://Art/Zombeez Assets/effects/firing_edited/firing 2_3.png" id="12_hkdoi"]
+[ext_resource type="Texture2D" uid="uid://d32bgau4uws7s" path="res://Art/Zombeez Assets/Characters Edited/character1_death-sheet.png" id="13_7iucw"]
 [ext_resource type="Texture2D" uid="uid://cepcdou21mh4d" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_1_1.png" id="13_ick73"]
 [ext_resource type="Theme" uid="uid://du6dvda4fdd25" path="res://Resources/GUI_inventory.tres" id="13_lccn7"]
 [ext_resource type="Texture2D" uid="uid://bgerbmdbnkrdh" path="res://Art/Zombeez Assets/effects/firing_edited/firing 3_1.png" id="13_vqrlu"]
 [ext_resource type="Script" path="res://Graphics and UI/GUI inventory.gd" id="14_1diue"]
 [ext_resource type="Texture2D" uid="uid://dlgvt8ci8do03" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_2_3.png" id="14_3tivw"]
 [ext_resource type="ButtonGroup" uid="uid://cussspoyb8fgt" path="res://Resources/button_group_inventory.tres" id="15_2mh1o"]
+[ext_resource type="Texture2D" uid="uid://dsuelmesounyw" path="res://Art/Zombeez Assets/Characters Edited/character1_idle_sheet.png" id="15_3cyl6"]
 [ext_resource type="Texture2D" uid="uid://u1jcx67d7liw" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_3_1.png" id="15_qyhrb"]
 [ext_resource type="Texture2D" uid="uid://d1x6sfw6v3xdb" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_3_2.png" id="16_mo1td"]
 [ext_resource type="Texture2D" uid="uid://357klbte6lnb" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_3_3.png" id="17_i2kip"]
-[ext_resource type="PackedScene" uid="uid://c5xg41upmh5x6" path="res://Enemies/zombie_gunner.tscn" id="31_lx8el"]
-[ext_resource type="Material" uid="uid://bmdgw0udvqqok" path="res://Resources/wind_sway.tres" id="31_uq0b6"]
-[ext_resource type="Texture2D" uid="uid://dm12cr5nxnkto" path="res://Art/Zombeez Assets/Tileset/bush_single-right-edge.png" id="32_qx14l"]
+[ext_resource type="PackedScene" uid="uid://wplbjmfh4l3a" path="res://Methods/health.tscn" id="20_i31em"]
+[ext_resource type="Script" path="res://Resources/RichTextEffects/heart.gd" id="30_uxhsi"]
+[ext_resource type="PackedScene" uid="uid://4gr0fv8dpl0j" path="res://Methods/collectable.tscn" id="37_fw3hs"]
+[ext_resource type="Texture2D" uid="uid://cfx25i1somiiv" path="res://Art/Zombeez Assets/Tileset/subway_bbg.png" id="40_ye6i0"]
+[ext_resource type="Texture2D" uid="uid://c628i2b07du7y" path="res://Art/Zombeez Assets/Tileset/subway_bg.png" id="41_5yw1x"]
+[ext_resource type="Texture2D" uid="uid://rrh5t21pt7mc" path="res://Art/Zombeez Assets/Tileset/amusement-park_bg2.png" id="43_blw8k"]
+[ext_resource type="Texture2D" uid="uid://cm2swo5w5oo1h" path="res://Art/Zombeez Assets/Characters Edited/character1_mugshot2.png" id="44_bwm57"]
+[ext_resource type="Texture2D" uid="uid://bkue18apa5xxh" path="res://Art/Zombeez Assets/ui+drone/_ui/health_texture.png" id="44_ib4op"]
+[ext_resource type="Texture2D" uid="uid://bw2avcworehas" path="res://Art/Zombeez Assets/Tileset/amusement_park_cg.png" id="45_2rj1g"]
+[ext_resource type="Texture2D" uid="uid://mexydva308le" path="res://Art/Zombeez Assets/ui+drone/_ui/health_empty.png" id="45_bxtju"]
+[ext_resource type="Texture2D" uid="uid://hp4apwpjwvwd" path="res://Art/Zombeez Assets/bullets/bullet_1_1.png" id="52_24jo4"]
+[ext_resource type="Texture2D" uid="uid://b13ynn2xkn4al" path="res://Art/Zombeez Assets/bullets/bullet_3_1.png" id="53_77lk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1006"]
+size = Vector2(86, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joocu"]
 size = Vector2(16, 45)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5u6j"]
-atlas = ExtResource("2_0rfl4")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="Animation" id="Animation_ewpux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_pqrrn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d8eys"]
-atlas = ExtResource("3_7075t")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xtoo6"]
-atlas = ExtResource("3_7075t")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xvaoy"]
-atlas = ExtResource("3_pqrrn")
-region = Rect2(0, 0, 64, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pee2b"]
-atlas = ExtResource("3_pqrrn")
-region = Rect2(64, 0, 64, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s4hex"]
-atlas = ExtResource("3_pqrrn")
-region = Rect2(128, 0, 64, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rfwmt"]
-atlas = ExtResource("3_pqrrn")
-region = Rect2(192, 0, 64, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xryqy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l5u6j")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_d8eys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xtoo6")
-}],
-"loop": false,
-"name": &"jump",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xvaoy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pee2b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s4hex")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rfwmt")
-}],
-"loop": true,
-"name": &"running",
-"speed": 5.0
+[sub_resource type="Animation" id="Animation_ix64s"]
+resource_name = "death"
+length = 0.6
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_7iucw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("health")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete_all"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_scwcm"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_3cyl6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_eekw7"]
+resource_name = "jumping"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_7075t")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_vjd1h"]
+resource_name = "running"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_pqrrn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivqfm"]
+_data = {
+"RESET": SubResource("Animation_ewpux"),
+"death": SubResource("Animation_ix64s"),
+"idle": SubResource("Animation_scwcm"),
+"jumping": SubResource("Animation_eekw7"),
+"running": SubResource("Animation_vjd1h")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lw426"]
 atlas = ExtResource("9_u4dow")
@@ -179,7 +366,7 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_oltlx")
 }, {
 "duration": 1.0,
@@ -201,91 +388,193 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fojta"]
-texture = ExtResource("3_82oko")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-2:1/0 = 0
-2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:1/0/physics_layer_0/angular_velocity = 0.0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-3:1/0 = 0
-3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:1/0/physics_layer_0/angular_velocity = 0.0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-0:2/0 = 0
-0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:2/0/physics_layer_0/angular_velocity = 0.0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 64, -3.5, 64, 64, -64, 64)
-1:2/0 = 0
-1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:2/0/physics_layer_0/angular_velocity = 0.0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -3.5, 47.5, -3.5, 34.5, 35.5, 55.5, 64, -64, 64)
-2:2/0 = 0
-2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:2/0/physics_layer_0/angular_velocity = 0.0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40.5, -3.5, 64, -3.5, 64, 64, -40.5, 64, -11.5, 38.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p782a"]
+size = Vector2(18, 47)
 
-[sub_resource type="TileSet" id="TileSet_vp6vk"]
-tile_size = Vector2i(128, 128)
-physics_layer_0/collision_layer = 129
-physics_layer_0/collision_mask = 0
-sources/2 = SubResource("TileSetAtlasSource_fojta")
+[sub_resource type="RichTextEffect" id="RichTextEffect_ic44j"]
+script = ExtResource("30_uxhsi")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fydy7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vpsgs"]
+
+[sub_resource type="GDScript" id="GDScript_nm65o"]
+script/source = "extends Resource
+
+@export var name : String = \"Pistol\"
+@export var damage : int = 10 # gun damage
+@export var weight : float = 1.5 # weight of the gun that will slow the player 
+@export var power : float = 1 # gun knockback / recoil
+@export var rate_of_fire : float = 0.1 # frequency to fire projectiles
+@export var max_ammo : int = 30 # maximum amount of bullets
+@export var spread : float = 0.01 # gun's accuracy
+@export var bullet_life_time : float = 0.3 # time until the bullet disappears
+@export var bullets : int = 30 # remaining amount of bullets
+@export var texture : Texture2D = null # gun texture
+@export var bullet_texture : Texture2D = null # bullet texture
+@export var bullet_count : int = 1 # amount of bullets shot everytime it shoots
+@export var bullet_interval : float = 0.01 # how much time the next bullet in bullet_count is instantiated
+@export var penetration : int = 1 # how much it can break through armor
+
+func bullets_remaining():
+	return bullet_count
+"
+
+[sub_resource type="Resource" id="Resource_khh0n"]
+resource_local_to_scene = true
+script = SubResource("GDScript_nm65o")
+name = "uzi"
+damage = 8
+weight = 1.0
+power = 7.0
+rate_of_fire = 0.6
+max_ammo = 120
+spread = 0.2
+bullet_life_time = 0.3
+bullets = 120
+texture = ExtResource("15_qyhrb")
+bullet_texture = ExtResource("53_77lk5")
+bullet_count = 4
+bullet_interval = 0.05
+penetration = 1
+
+[sub_resource type="Gradient" id="Gradient_p3y43"]
+colors = PackedColorArray(1, 0.729412, 0, 0.529412, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5gdr6"]
+gradient = SubResource("Gradient_p3y43")
+fill = 1
+fill_from = Vector2(0.496933, 0.481595)
+
+[sub_resource type="GDScript" id="GDScript_8dnls"]
+script/source = "extends Resource
+
+@export var name : String = \"Pistol\"
+@export var damage : int = 10 # gun damage
+@export var weight : float = 1.5 # weight of the gun that will slow the player 
+@export var power : float = 1 # gun knockback / recoil
+@export var rate_of_fire : float = 0.1 # frequency to fire projectiles
+@export var max_ammo : int = 30 # maximum amount of bullets
+@export var spread : float = 0.01 # gun's accuracy
+@export var bullet_life_time : float = 0.3 # time until the bullet disappears
+@export var bullets : int = 30 # remaining amount of bullets
+@export var texture : Texture2D = null # gun texture
+@export var bullet_texture : Texture2D = null # bullet texture
+@export var bullet_count : int = 1 # amount of bullets shot everytime it shoots
+@export var bullet_interval : float = 0.01 # how much time the next bullet in bullet_count is instantiated
+@export var penetration : int = 1 # how much it can break through armor
+
+func bullets_remaining():
+	return bullet_count
+"
+
+[sub_resource type="Resource" id="Resource_ngkqc"]
+resource_local_to_scene = true
+script = SubResource("GDScript_8dnls")
+name = "pistol"
+damage = 10
+weight = 1.0
+power = 16.0
+rate_of_fire = 0.3
+max_ammo = 30
+spread = 0.1
+bullet_life_time = 2.0
+bullets = 30
+texture = ExtResource("13_ick73")
+bullet_texture = ExtResource("52_24jo4")
+bullet_count = 1
+bullet_interval = 0.01
+penetration = 1
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_7744f")
+
+[node name="Enemies" type="TileMap" parent="."]
+tile_set = ExtResource("1_bei5k")
+format = 2
+layer_0/name = "Normal"
+layer_0/tile_data = PackedInt32Array(-65514, 0, 262144, -65527, 0, 327680, -65632, 0, 262144, -131179, 0, 131072, -65434, 0, 262144, -131011, 0, 393216, -2949010, 0, 65536)
+layer_1/name = "Behind"
+layer_1/z_index = -100
+layer_1/tile_data = PackedInt32Array(-393086, 0, 327680, -196516, 0, 262144)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_ofdoo")
+format = 2
+layer_0/name = "Background_BLDG"
+layer_0/z_index = -100
+layer_1/name = "Ground"
+layer_1/z_index = -50
+layer_1/tile_data = PackedInt32Array(131055, 131074, 0, 131065, 262146, 0, 458748, 65542, 1, 458740, 6, 1, 393220, 131078, 3, 393228, 6, 1, 393236, 65542, 3, 393244, 131078, 3, 393251, 65542, 1, 393259, 131078, 3, 393267, 131078, 1, 393275, 6, 3, 393282, 196614, 1, 393289, 6, 1, 393296, 65542, 3, 393303, 6, 1, 458733, 6, 5, 458727, 196614, 3, 458719, 65542, 3, 458711, 131078, 1, 458703, 65542, 1, 458697, 65542, 1, 458689, 65542, 1, 458682, 6, 1, 458676, 65542, 3, 458670, 6, 5, 458662, 6, 3, 393310, 6, 3, 393318, 6, 5, 393324, 65542, 3, 393330, 6, 1, 393337, 65542, 1, 393345, 65542, 1, 393351, 65542, 1, 393359, 131078, 1, 393367, 65542, 3, 393375, 196614, 3, 393381, 6, 5, 393388, 6, 1, 393396, 65542, 1, 393404, 131078, 3, 393412, 6, 1, 393420, 65542, 3, 393428, 131078, 3, 393435, 65542, 1, 393443, 131078, 3, 393451, 131078, 1, 393459, 6, 3, 393466, 196614, 1, 393473, 6, 1, 393480, 65542, 3, 458480, 6, 3, 458488, 6, 5, 458494, 65542, 3, 458500, 6, 1, 458507, 65542, 1, 458515, 65542, 1, 458521, 65542, 1, 458529, 131078, 1, 458537, 65542, 3, 458545, 196614, 3, 458551, 6, 5, 458558, 6, 1, 458566, 65542, 1, 458605, 65542, 1, 458613, 131078, 3, 458621, 131078, 1, 458629, 6, 3, 458636, 196614, 1, 458643, 6, 1, 458650, 65542, 3, 458657, 6, 1, -7, 4, 65536, 196712, 5, 4, 393510, 196614, 3, 393516, 6, 5, 393523, 6, 1, 393531, 65542, 1, 393539, 131078, 3, 393547, 6, 1, 393555, 65542, 3, 393563, 131078, 3, 393570, 65542, 1, 393578, 131078, 3, 393586, 131078, 1, 393594, 6, 3, 393601, 196614, 1, 393608, 6, 1, 393615, 65542, 3, 393622, 6, 1, 393629, 131078, 1, 393637, 65542, 3, 393645, 196614, 3, 393651, 6, 5, 393658, 6, 1, 393666, 65542, 1, 393674, 131078, 3, 393682, 6, 1, 393690, 65542, 3, 393698, 131078, 3, 393705, 65542, 1, 393713, 131078, 3, 393721, 131078, 1, 393729, 6, 3, 393736, 196614, 1, 393743, 6, 1, 393750, 65542, 3, 393757, 6, 1, 458597, 131078, 5, 458574, 65542, 5, 393487, 6, 1, 393495, 65542, 1, 393503, 65542, 1, 131357, 2, 12, 65826, 262146, 0, -65246, 4, 65536, 65816, 131074, 0, 7536647, 9, 19, 7536670, 9, 19, 7536694, 9, 19, 7536718, 9, 19, 7536741, 9, 19, 7536765, 9, 19, 7536789, 9, 19, 7536812, 9, 19, 7536836, 9, 19, 7536860, 9, 19, 7536883, 9, 19, 7536907, 9, 19, 7536931, 9, 19, 7536954, 9, 19, 7536978, 9, 19, 7537002, 9, 19, 7537025, 9, 19, 7537049, 9, 19, 7537073, 9, 19, 7537096, 9, 19, 7537120, 9, 19, 7602112, 9, 19, 7602041, 9, 19, 7602064, 9, 19, 7602088, 9, 19, 7602135, 9, 19, 7602159, 9, 19)
+layer_2/name = "Bushes"
+layer_2/z_index = -65
+layer_2/tile_data = PackedInt32Array(262069, 5, 2, 262076, 5, 4, 262131, 5, 0, 262138, 5, 2, 196608, 5, 4, 65540, 524293, 0, 196616, 5, 4, 196620, 5, 0, 196630, 5, 0, 196640, 5, 65538, 196651, 5, 65540, 196655, 5, 131074, 196676, 5, 4, 196691, 5, 0, 196694, 5, 131074, 196774, 5, 2, 92, 1179651, 12, 65668, 1769475, 4, 167, 1179651, 1, -720788, 4, 196608, -65415, 131075, 0, 65664, 262146, 0, -65408, 4, 65536, 65552, 262146, 0, -65520, 4, 65536, 196748, 5, 131074, 196759, 5, 65540, 196765, 5, 131076, 196769, 5, 2, 156, 1179651, 12, 196793, 5, 4, 196825, 5, 2, 196831, 5, 4, 196840, 5, 2, 196846, 5, 4, 196856, 5, 0, 196868, 5, 0, 196870, 5, 0, 196873, 5, 4, 196780, 5, 2, 262056, 5, 0, 262025, 5, 131072, 262001, 5, 131072, 262044, 5, 0, 262054, 5, 4, 131286, 786434, 12, 65780, 524293, 0, 196553, 524293, 0, 7471070, 786442, 0, 7143451, 7, 196608, 7340025, 524290, 16, 7274489, 4, 131072)
+layer_3/name = "Bench"
+layer_3/z_index = -60
+layer_3/tile_data = PackedInt32Array(262131, 2, 6, 196599, 327682, 1, 262128, 262146, 10, 65569, 196610, 0, 65586, 196610, 0, 65603, 196610, 0, 65620, 196610, 0, 131038, 196610, 0, 131004, 131074, 0, 130987, 131074, 0, 130970, 262146, 0, -102, 4, 65536, 65649, 131074, 0, 65637, 262146, 0, -65452, 4, 65536, -65328, 524290, 10, 131283, 786434, 2, 65766, 3407879, 131072, -458518, 1703943, 0, 7274450, 786442, 0, 6422483, 786442, 0, 6422471, 786442, 0, 7274439, 786442, 0, 5570515, 786442, 0, 5570503, 786442, 0, 4718547, 786442, 0, 4718535, 786442, 0, 7274515, 2, 65542, 7274520, 2, 65542, 7274510, 2, 65542, 7274534, 2, 65542, 7274539, 2, 65542, 7274543, 2, 65542, 7208991, 262146, 0, 7077919, 4, 65536, 7274524, 2, 65542, 7340067, 262146, 10, 7340043, 262146, 10)
+layer_4/name = "top_bush"
+layer_4/z_index = 60
+layer_4/tile_data = PackedInt32Array(262073, 5, 65536, 130998, 524293, 65536, 262080, 5, 131074, 262104, 5, 131074, 262112, 5, 65536, 196665, 5, 65540, 196683, 5, 65538, 196687, 5, 65538, 196707, 5, 65538, 196723, 5, 65538, 196734, 5, 65536, 196663, 5, 65538, 196640, 5, 65538, 196627, 5, 65538, 196616, 5, 65538, 196615, 5, 65540, 131085, 786434, 2, 196720, 5, 65536, 262070, 4, 131072, 196532, 65538, 65552, 196752, 5, 65536, 196773, 5, 65540, 196809, 5, 65538, 196793, 5, 65538, 196863, 5, 65540, 196874, 5, 65540, 262029, 5, 65536, 262016, 5, 65536, 262011, 5, 65538, 196704, 327682, 7, 262083, 5, 0, 131015, 524293, 131072, 262088, 5, 131076, 262092, 5, 65538, 262096, 5, 131076, 262101, 5, 65536, 65494, 524293, 65536, -65577, 524293, 65536, 131016, 524293, 131072, 131278, 524290, 16, -524055, 4, 131072, 131326, 524293, 0, -327459, 786434, 2, 131342, 786434, 2, 196881, 262146, 10, 131031, 524293, 131072, 65634, 589826, 0, 65742, 4, 131072, 65767, 4, 131072, 254, 7, 0, 6750174, 10, 0, 7274474, 10, 0, 7602147, 9, 11, 7602148, 9, 11, 7274496, 786434, 2, 7274501, 786434, 2)
+
+[node name="ambient" type="CanvasModulate" parent="TileMap"]
+color = Color(0.101961, 0.054902, 0.0862745, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="TileMap"]
+position = Vector2(-406, -659)
+color = Color(0.101961, 0, 0.156863, 1)
+
+[node name="Subway_entrance" type="Area2D" parent="TileMap"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Subway_entrance"]
+position = Vector2(4568, 56)
+shape = SubResource("RectangleShape2D_f1006")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-634, -31)
-offset = Vector2(0, 10)
+position = Vector2(-236, 1685)
+offset = Vector2(0, -100)
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.6
+drag_bottom_margin = 0.0
 
 [node name="Bullet Parent" type="Marker2D" parent="."]
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(-633, -4)
-collision_layer = 25
-collision_mask = 161
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("character_animation", "character_sprite") groups=["player"]]
+unique_name_in_owner = true
+position = Vector2(-235, 1712)
+collision_layer = 89
+collision_mask = 225
 script = ExtResource("1_dtw8s")
+character_animation = NodePath("AnimationPlayer")
+character_sprite = NodePath("Character")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1, 6.5)
 shape = SubResource("RectangleShape2D_joocu")
 
-[node name="Character" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(-1, 4)
-sprite_frames = SubResource("SpriteFrames_xryqy")
-offset = Vector2(0, -31)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_ivqfm")
+}
+autoplay = "idle"
+
+[node name="Character" type="Sprite2D" parent="Player"]
+position = Vector2(-1, -27)
+texture = ExtResource("3_pqrrn")
+hframes = 4
 
 [node name="Hand" type="Sprite2D" parent="Player"]
+visible = false
+texture_filter = 1
 position = Vector2(-1, 7)
 texture = ExtResource("3_am53r")
 offset = Vector2(20, -3)
 
 [node name="Gun" type="Sprite2D" parent="Player/Hand" node_paths=PackedStringArray("bullet_parent")]
 position = Vector2(20, -2)
-texture = ExtResource("15_qyhrb")
 script = ExtResource("8_nhtqo")
 pistol = ExtResource("8_ro8fj")
 shotgun = ExtResource("9_th7us")
@@ -299,9 +588,10 @@ position = Vector2(10, -4)
 script = ExtResource("8_6qe37")
 
 [node name="firing_effects" type="AnimatedSprite2D" parent="Player/Hand/Gun/Barrel"]
+material = ExtResource("2_bbh73")
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_rcaal")
-animation = &"uzi"
+animation = &"shotgun"
 
 [node name="aim_direction" type="Marker2D" parent="Player"]
 visible = false
@@ -314,101 +604,238 @@ texture = ExtResource("6_l8gkp")
 position = Vector2(-1, -27)
 remote_path = NodePath("../../Camera2D")
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_vp6vk")
-format = 2
-layer_0/name = "Ground"
-layer_0/z_index = -100
-layer_0/tile_data = PackedInt32Array(65535, 131074, 0, 0, 2, 0, 65531, 2, 1, 65532, 65538, 1, 65534, 2, 1, 65533, 131074, 0, 1, 2, 2, 4, 196610, 0, 5, 196610, 1, 2, 196610, 1, 3, 131074, 1, 65530, 196610, 1, 65528, 131074, 1, 65529, 2, 1, 65527, 196610, 0, 6, 196610, 1, 7, 65538, 0)
+[node name="health" parent="Player" instance=ExtResource("20_i31em")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="detect_attacks" parent="Player/health" index="0"]
+collision_mask = 16
 
-[node name="GUI weapon" type="PanelContainer" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -59.0
-offset_bottom = 41.0
-grow_horizontal = 0
+[node name="CollisionShape2D" parent="Player/health/detect_attacks" index="0"]
+position = Vector2(-1, 6.5)
+shape = SubResource("RectangleShape2D_p782a")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="GUI weapon" type="PanelContainer" parent="HUD"]
+offset_left = 57.0
+offset_top = 58.0
+offset_right = 121.0
+offset_bottom = 135.0
 theme = ExtResource("10_vcsxl")
 script = ExtResource("11_0rvjp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI weapon"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/GUI weapon"]
 layout_mode = 2
 theme_override_constants/separation = -5
+alignment = 1
 
-[node name="Weapon" type="TextureRect" parent="CanvasLayer/GUI weapon/VBoxContainer"]
+[node name="Weapon" type="TextureRect" parent="HUD/GUI weapon/VBoxContainer"]
 clip_contents = true
 layout_mode = 2
 texture = ExtResource("13_ick73")
-stretch_mode = 3
+expand_mode = 5
 
-[node name="BulletCount" type="Label" parent="CanvasLayer/GUI weapon/VBoxContainer"]
+[node name="BulletCount" type="RichTextLabel" parent="HUD/GUI weapon/VBoxContainer"]
 layout_mode = 2
+focus_mode = 2
+bbcode_enabled = true
 text = "30/30"
-horizontal_alignment = 1
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 6
+custom_effects = [SubResource("RichTextEffect_ic44j")]
+selection_enabled = true
 
-[node name="GUI inventory" type="PanelContainer" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
+[node name="GUI inventory" type="PanelContainer" parent="HUD"]
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -112.0
-offset_top = -32.0
-offset_right = 112.0
-grow_horizontal = 2
+offset_left = 270.0
+offset_top = -418.0
+offset_right = 526.0
+offset_bottom = -370.0
 grow_vertical = 0
 theme = ExtResource("13_lccn7")
 script = ExtResource("14_1diue")
+pistol = ExtResource("8_ro8fj")
+shotgun = ExtResource("9_th7us")
+uzi = ExtResource("10_mdqbl")
+ak = ExtResource("11_jsh42")
+machine_gun = ExtResource("12_6fs0q")
 buttons = ExtResource("15_2mh1o")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI inventory"]
+[node name="VBoxContainer" type="HBoxContainer" parent="HUD/GUI inventory"]
 layout_mode = 2
 
-[node name="Slot1" type="Button" parent="CanvasLayer/GUI inventory/VBoxContainer"]
+[node name="Slot1" type="Button" parent="HUD/GUI inventory/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-disabled = true
 toggle_mode = true
+button_mask = 0
 button_group = ExtResource("15_2mh1o")
 icon = ExtResource("13_ick73")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Slot2" type="Button" parent="CanvasLayer/GUI inventory/VBoxContainer"]
+[node name="Slot2" type="Button" parent="HUD/GUI inventory/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("15_2mh1o")
 icon = ExtResource("14_3tivw")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Slot3" type="Button" parent="CanvasLayer/GUI inventory/VBoxContainer"]
+[node name="Slot3" type="Button" parent="HUD/GUI inventory/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("15_2mh1o")
 icon = ExtResource("15_qyhrb")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Slot4" type="Button" parent="CanvasLayer/GUI inventory/VBoxContainer"]
+[node name="Slot4" type="Button" parent="HUD/GUI inventory/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("15_2mh1o")
 icon = ExtResource("16_mo1td")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Slot5" type="Button" parent="CanvasLayer/GUI inventory/VBoxContainer"]
+[node name="Slot5" type="Button" parent="HUD/GUI inventory/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("15_2mh1o")
 icon = ExtResource("17_i2kip")
+icon_alignment = 1
+expand_icon = true
 
-[node name="zombie_gunner" parent="." instance=ExtResource("31_lx8el")]
-position = Vector2(-416, -15)
+[node name="Health_Bar" type="PanelContainer" parent="HUD"]
+offset_left = 70.0
+offset_top = 30.0
+offset_right = 390.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fydy7")
 
-[node name="zombie_gunner2" parent="." instance=ExtResource("31_lx8el")]
-position = Vector2(-974, -7)
+[node name="HBoxContainer" type="VBoxContainer" parent="HUD/Health_Bar"]
+layout_mode = 2
 
-[node name="zombie_gunner3" parent="." instance=ExtResource("31_lx8el")]
-position = Vector2(-279, -19)
+[node name="Character1Mughshot" type="Sprite2D" parent="HUD/Health_Bar/HBoxContainer"]
+top_level = true
+z_index = -1
+position = Vector2(64, 66)
+texture = ExtResource("44_bwm57")
 
-[node name="BushSingle-right-edge" type="Sprite2D" parent="."]
-material = ExtResource("31_uq0b6")
-position = Vector2(-512, 42)
-texture = ExtResource("32_qx14l")
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/Health_Bar/HBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("45_bxtju")
+texture_progress = ExtResource("44_ib4op")
+tint_progress = Color(1, 0, 0, 1)
 
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(-4, -314)
+motion_scale = Vector2(0.3, 0.5)
+motion_offset = Vector2(0, 120)
+motion_mirroring = Vector2(1536, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.239216, 0.117647, 0.145098, 1)
+material = SubResource("CanvasItemMaterial_vpsgs")
+position = Vector2(0, -260)
+texture = ExtResource("43_blw8k")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_scale = Vector2(0.35, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer2"]
+modulate = Color(0.239216, 0.117647, 0.145098, 1)
+position = Vector2(0, -193)
+texture = ExtResource("45_2rj1g")
+centered = false
+
+[node name="Subway" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Subway"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Subway/ParallaxBackground"]
+position = Vector2(-24, 754)
+motion_scale = Vector2(0.3, 0.5)
+motion_offset = Vector2(0, -64)
+motion_mirroring = Vector2(1536, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Subway/ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.101961, 0.054902, 0.0862745, 1)
+position = Vector2(-19, -47)
+texture = ExtResource("40_ye6i0")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Subway/ParallaxBackground"]
+position = Vector2(-5, 1723)
+motion_scale = Vector2(0.35, 1)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Subway/ParallaxBackground/ParallaxLayer2"]
+modulate = Color(0.101961, 0.054902, 0.0862745, 1)
+material = SubResource("CanvasItemMaterial_vpsgs")
+position = Vector2(-41, -667)
+texture = ExtResource("41_5yw1x")
+centered = false
+
+[node name="Uzi" type="Sprite2D" parent="."]
+light_mask = 0
+position = Vector2(1738, -217)
+texture = ExtResource("15_qyhrb")
+offset = Vector2(2, 22)
+
+[node name="Collectable" parent="Uzi" instance=ExtResource("37_fw3hs")]
+z_index = -50
+position = Vector2(-1.00065, 19)
+resource_data = SubResource("Resource_khh0n")
+
+[node name="Light" parent="Uzi/Collectable" index="1"]
+color = Color(0.960784, 0.623529, 0.243137, 1)
+energy = 3.88
+
+[node name="Sprite2D" parent="Uzi/Collectable/Light" index="0"]
+visible = true
+position = Vector2(17.4503, 6.52361)
+scale = Vector2(12.8149, 11.6687)
+texture = SubResource("GradientTexture2D_5gdr6")
+
+[node name="Pistol" type="Sprite2D" parent="."]
+position = Vector2(-197, 46)
+texture = ExtResource("13_ick73")
+
+[node name="Collectable" parent="Pistol" instance=ExtResource("37_fw3hs")]
+resource_data = SubResource("Resource_ngkqc")
+
+[node name="Light" parent="Pistol/Collectable" index="1"]
+color = Color(0.960784, 0.623529, 0.243137, 1)
+energy = 2.64
+
+[connection signal="body_entered" from="TileMap/Subway_entrance" to="." method="_on_subway_entrance_body_entered"]
 [connection signal="animation_finished" from="Player/Hand/Gun/Barrel/firing_effects" to="Player/Hand/Gun/Barrel" method="_on_firing_effects_animation_finished"]
+[connection signal="area_entered" from="Player/health/detect_attacks" to="Player/health" method="_on_detect_attacks_area_entered"]
+
+[editable path="Player/health"]
+[editable path="Uzi/Collectable"]
+[editable path="Uzi/Collectable/Light"]
+[editable path="Pistol/Collectable"]
+[editable path="Pistol/Collectable/Light"]

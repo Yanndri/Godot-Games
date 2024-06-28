@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://4gr0fv8dpl0j"]
+
+[ext_resource type="Script" path="res://Methods/Collectable.gd" id="1_gupaf"]
+[ext_resource type="PackedScene" uid="uid://d0cuve2fl0bjp" path="res://Graphics and UI/light.tscn" id="2_jdowo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vp3x"]
+radius = 19.2354
+
+[node name="Collectable" type="Node2D"]
+script = ExtResource("1_gupaf")
+
+[node name="Collect_Range" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collect_Range"]
+shape = SubResource("CircleShape2D_8vp3x")
+
+[node name="Light" parent="." instance=ExtResource("2_jdowo")]
+scale = Vector2(0.0491211, 0.0525391)
+
+[connection signal="body_entered" from="Collect_Range" to="." method="_on_collect_range_body_entered"]
+
+[editable path="Light"]

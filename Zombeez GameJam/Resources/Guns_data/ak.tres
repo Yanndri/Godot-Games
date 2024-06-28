@@ -1,0 +1,42 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://djtxghn7n8ar6"]
+
+[ext_resource type="Texture2D" uid="uid://d1x6sfw6v3xdb" path="res://Art/Zombeez Assets/weapons Edited/weapon_icon_3_2.png" id="1_cfyhj"]
+[ext_resource type="Texture2D" uid="uid://b3ohtyjnm7epm" path="res://Art/Zombeez Assets/bullets/bullet_3_2.png" id="1_gfwip"]
+
+[sub_resource type="GDScript" id="GDScript_nm65o"]
+script/source = "extends Resource
+
+@export var name : String = \"Pistol\"
+@export var damage : int = 10 # gun damage
+@export var weight : float = 1.5 # weight of the gun that will slow the player 
+@export var power : float = 1 # gun knockback / recoil
+@export var rate_of_fire : float = 0.1 # frequency to fire projectiles
+@export var max_ammo : int = 30 # maximum amount of bullets
+@export var spread : float = 0.01 # gun's accuracy
+@export var bullet_life_time : float = 0.3 # time until the bullet disappears
+@export var bullets : int = 30 # remaining amount of bullets
+@export var texture : Texture2D = null # gun texture
+@export var bullet_texture : Texture2D = null # bullet texture
+@export var bullet_count : int = 1 # amount of bullets shot everytime it shoots
+@export var bullet_interval : float = 0.01 # how much time the next bullet in bullet_count is instantiated
+
+func bullets_remaining():
+	return bullet_count
+"
+
+[resource]
+resource_local_to_scene = true
+script = SubResource("GDScript_nm65o")
+name = "ak"
+damage = 15
+weight = 4.0
+power = 6.0
+rate_of_fire = 0.1
+max_ammo = 60
+spread = 0.3
+bullet_life_time = 0.3
+bullets = 60
+texture = ExtResource("1_cfyhj")
+bullet_texture = ExtResource("1_gfwip")
+bullet_count = 1
+bullet_interval = 0.01

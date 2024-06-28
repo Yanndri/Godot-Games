@@ -16,7 +16,11 @@ func _process(_delta):
 	if bullet_timer.time_left == 0:
 		queue_free()
 
-func shoot(bullet_life_time, bullet_type):
-	bullet_sprite.texture = bullet_type
-	bullet_timer.wait_time = bullet_life_time
+func shoot(gun_data):
+	damage = gun_data.damage + randi_range(-(gun_data.damage / 5), (gun_data.damage / 5))
+	bullet_sprite.texture = gun_data.bullet_texture
+	bullet_timer.wait_time = gun_data.bullet_life_time
 	bullet_timer.start()
+
+func detect_layer(layer): # che ck what the bulle should detect
+	set_collision_layer_value(layer, true)

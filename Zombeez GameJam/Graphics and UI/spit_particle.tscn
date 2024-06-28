@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccyqgxsid7wh0"]
+
+[ext_resource type="Texture2D" uid="uid://65fcdpemh10h" path="res://Art/Zombeez Assets/effects/Acid/Green_Spit.png" id="1_sll0g"]
+
+[sub_resource type="Curve" id="Curve_qt38d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3wffc"]
+curve = SubResource("Curve_qt38d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fswy2"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_3wffc")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_db4sd"]
+radius = 15.1327
+
+[node name="Spit_Particle" type="RigidBody2D" groups=["attack", "bullet"]]
+collision_layer = 0
+collision_mask = 16
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_fswy2")
+texture = ExtResource("1_sll0g")
+lifetime = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_db4sd")

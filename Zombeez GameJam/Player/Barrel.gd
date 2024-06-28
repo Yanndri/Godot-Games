@@ -9,8 +9,8 @@ func fire():
 	effects.visible = true
 	effects.play()
 
-func update_gun(gun_type):
-	effects.animation = gun_type
+func update_gun(gun_name):
+	effects.animation = gun_name
 
 func _on_firing_effects_animation_finished():
 	effects.visible = false

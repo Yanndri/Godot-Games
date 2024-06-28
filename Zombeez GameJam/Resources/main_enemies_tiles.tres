@@ -1,0 +1,21 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://deo1aop5g6cpj"]
+
+[ext_resource type="PackedScene" uid="uid://027ndnwntndo" path="res://Enemies/Flying_boss.tscn" id="1_km672"]
+[ext_resource type="PackedScene" uid="uid://b5d0u5mgypfb0" path="res://Enemies/Muscle_boss.tscn" id="2_n48w8"]
+[ext_resource type="PackedScene" uid="uid://c5xg41upmh5x6" path="res://Enemies/zombie_gunner.tscn" id="3_0u4vp"]
+[ext_resource type="PackedScene" uid="uid://ditx63853ydeo" path="res://Enemies/Crawling_Zombie.tscn" id="4_rl213"]
+[ext_resource type="PackedScene" uid="uid://cxsts8n0cs2iu" path="res://Enemies/One_Hand_Zombie.tscn" id="5_nnk4k"]
+[ext_resource type="PackedScene" uid="uid://b6iphdhg47l8r" path="res://Enemies/Fast_Zombie.tscn" id="6_5c2c7"]
+[ext_resource type="PackedScene" uid="uid://cjn54skrbbg47" path="res://Enemies/Spitter_Zombie.tscn" id="7_mm4ah"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ahuts"]
+scenes/1/scene = ExtResource("1_km672")
+scenes/2/scene = ExtResource("2_n48w8")
+scenes/3/scene = ExtResource("3_0u4vp")
+scenes/4/scene = ExtResource("4_rl213")
+scenes/5/scene = ExtResource("5_nnk4k")
+scenes/6/scene = ExtResource("6_5c2c7")
+scenes/7/scene = ExtResource("7_mm4ah")
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_ahuts")

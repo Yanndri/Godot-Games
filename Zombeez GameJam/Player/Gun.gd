@@ -1,9 +1,10 @@
 extends Sprite2D
 
 @onready var bullet_scene : PackedScene = preload("res://Player/bullet.tscn")
+@onready var player = $"../.."
 @onready var hand = $".."
 @onready var barrel = $Barrel
-@onready var GUI_weapon = $"../../../CanvasLayer/GUI weapon"
+@onready var GUI_weapon = $"../../../HUD/GUI weapon"
 @onready var main = $"../.."
 
 @export var pistol : Resource
@@ -14,7 +15,7 @@ extends Sprite2D
 
 @export var bullet_parent : Marker2D
 
-var gun : Resource = load("res://Resources/pistol.tres")
+var gun : Resource
 
 var starting_load : bool
 var weight
@@ -27,55 +28,60 @@ var bullet_count = 1
 
 var bullet_type
 var barrel_pos : Vector2
+var can_shoot : bool = true
+var should_shoot : bool
+
+func _input(event):
+	if event is InputEventKey:
+		if Input.is_key_pressed(KEY_R):
+			GUI_weapon.reload_gun()
+	if event is InputEventMouseButton:
+		if event.button_index == 2: # if mouse pressed left click
+			GUI_weapon.reload_gun()
 
 func shoot():
-	for i in range(bullet_count):
+	if can_shoot != true:
+		return
+	for i in range(gun.bullet_count):
+		if should_shoot:
+			break
 		var bullet = bullet_scene.instantiate()
-		bullet.damage = gun.damage
-		bullet.linear_velocity = Vector2(2000, 0).rotated(deg_to_rad(hand.global_rotation_degrees) + randf_range(-spread, spread))
+		bullet.linear_velocity = Vector2(2000, 0).rotated(deg_to_rad(hand.global_rotation_degrees) + randf_range(-gun.spread, gun.spread))
+		#bullet_parent.position = barrel.global_position
 		bullet.position = barrel.global_position
 		bullet.rotation = hand.rotation
+		bullet.detect_layer(3) #detects enemies
 		bullet_parent.add_child(bullet) # it is important to put the bullet outside the hand so that the hand rotation doesn't affect the bullet
-		bullet.shoot(bullet_life_time, gun.bullet)
+		bullet.shoot(gun)
 		barrel.fire()
+		if gun.bullet_count != 1:
+			player.recoil()
+		GUI_weapon.bullet_remaining()
+		if gun.bullet_interval > 0:
+			await get_tree().create_timer(gun.bullet_interval).timeout # time until the next bullet is shot
+	if gun.bullet_count == 1:
+		player.recoil()
+func should_gun_shoot():
+	should_shoot = !should_shoot
 
-func change_gun(gun_type):
-	if gun_type == "shotgun":
-		bullet_count = 8
-	else:
-		bullet_count = 1
-	match gun_type:
-		"pistol": 
-			gun = pistol
-			barrel_pos = Vector2(10, -4)
-		"shotgun": 
-			gun = shotgun
-			barrel_pos = Vector2(16, -4)
-		"uzi": 
-			gun = uzi
-			barrel_pos = Vector2(9, -5)
-		"ak": 
-			gun = ak
-			barrel_pos = Vector2(18, -3)
-		"machine_gun": 
-			gun = machine_gun
-			barrel_pos = Vector2(18, -3)
-	texture = gun.texture
+func change_gun(gun_data):
+	match gun_data.name:
+		"pistol": barrel_pos = Vector2(10, -4)
+		"shotgun": barrel_pos = Vector2(16, -3)
+		"uzi": barrel_pos = Vector2(9, -5)
+		"ak": barrel_pos = Vector2(18, -3)
+		"machine_Gun": barrel_pos = Vector2(18, -3)
+	gun = gun_data
+	texture = gun_data.texture
 	barrel.position = barrel_pos
-	barrel.update_gun(gun_type)
-	update_gun()
-	GUI_weapon.change_gun(gun.texture, gun)
+	barrel.update_gun(gun_data.name)
+	self.update_gun()
+	GUI_weapon.change_gun(gun_data)
 
 func update_gun():
-	weight = gun.weight
-	power = gun.power
-	rate_of_fire = gun.rate_of_fire
-	max_ammo = gun.max_ammo
-	spread = gun.spread
-	bullet_life_time = gun.bullet_life_time
 	if !starting_load:
-		GUI_weapon.reload_gun()
+		GUI_weapon.instantiated(gun)
 		starting_load = true
 
 func gun_shot():
-	gun.bullet_count -= 1
+	gun.bullets -= 1

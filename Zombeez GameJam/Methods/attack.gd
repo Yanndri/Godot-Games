@@ -1,10 +1,10 @@
 extends Node2D
 
 @onready var parent = $".."
+@export var damage = 1
 
 func _on_area_attack_body_entered(body): # area that will damage the player, will detect if made contact
 	if body.is_in_group("player"):
-		print("dealt damage")
 		parent.dealt_damage() # damage the player
 
 func _on_area_attack_body_exited(body):

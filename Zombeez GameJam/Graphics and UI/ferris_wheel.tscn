@@ -1,0 +1,222 @@
+[gd_scene load_steps=14 format=3 uid="uid://dlh4dttsujje5"]
+
+[ext_resource type="Texture2D" uid="uid://4fo16o0owlae" path="res://Art/Zombeez Assets/Tileset/ferris-wheel_wheel.png" id="1_0pbn4"]
+[ext_resource type="Texture2D" uid="uid://csmr0olxfacfc" path="res://Art/Zombeez Assets/Tileset/ferris_wheel_booth.png" id="2_5rwen"]
+[ext_resource type="Texture2D" uid="uid://686hludt1lpg" path="res://Art/Zombeez Assets/Tileset/ferris-wheel_spine.png" id="3_cap3g"]
+[ext_resource type="Texture2D" uid="uid://dnpqbn4mqdb7d" path="res://Art/Zombeez Assets/Tileset/ferris_wheel_booth_person.png" id="3_mb0qk"]
+[ext_resource type="Texture2D" uid="uid://bfgav1mau3dad" path="res://Art/Zombeez Assets/Tileset/ferris_wheel_booth2.png" id="3_ou3ds"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kh7jg"]
+radius = 2.23607
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkmlt"]
+radius = 7.07107
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovkf7"]
+size = Vector2(32, 5.99955)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtyib"]
+size = Vector2(28, 8.00006)
+
+[sub_resource type="Animation" id="Animation_x3gjk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ferris-wheelWheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lktq3"]
+resource_name = "spin"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ferris-wheelWheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iu2qg"]
+_data = {
+"RESET": SubResource("Animation_x3gjk"),
+"spin": SubResource("Animation_lktq3")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_12h60"]
+radius = 18.0278
+
+[node name="Ferris_Wheel" type="Node2D"]
+z_index = -60
+position = Vector2(0, 1)
+rotation = 6.28319
+
+[node name="Ferris-wheelWheel" type="Sprite2D" parent="."]
+position = Vector2(0.5, 1.5)
+texture = ExtResource("1_0pbn4")
+offset = Vector2(0, 20)
+
+[node name="Booth" type="Node2D" parent="Ferris-wheelWheel"]
+position = Vector2(88.5, 98.5)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Ferris-wheelWheel/Booth"]
+position = Vector2(-0.499985, -0.499985)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ferris-wheelWheel/Booth"]
+position = Vector2(-1.00002, -1.99998)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth/StaticBody2D"]
+shape = SubResource("CircleShape2D_kh7jg")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Ferris-wheelWheel/Booth"]
+position = Vector2(-1, -3)
+collision_layer = 128
+collision_mask = 0
+
+[node name="FerrisWheelBooth" type="Sprite2D" parent="Ferris-wheelWheel/Booth/RigidBody2D"]
+position = Vector2(-0.499985, 19.5)
+texture = ExtResource("2_5rwen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth/RigidBody2D"]
+position = Vector2(-0.999426, 33.9996)
+rotation = 1.57079
+shape = SubResource("CircleShape2D_lkmlt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth/RigidBody2D"]
+position = Vector2(-0.999954, 4.99946)
+shape = SubResource("RectangleShape2D_ovkf7")
+
+[node name="Booth2" type="Node2D" parent="Ferris-wheelWheel"]
+position = Vector2(128.5, 6.49998)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Ferris-wheelWheel/Booth2"]
+position = Vector2(-0.499985, -0.499985)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ferris-wheelWheel/Booth2"]
+position = Vector2(-1.00002, -1.99998)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth2/StaticBody2D"]
+shape = SubResource("CircleShape2D_kh7jg")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Ferris-wheelWheel/Booth2"]
+position = Vector2(-1, -3)
+collision_layer = 128
+collision_mask = 0
+
+[node name="FerrisWheelBooth" type="Sprite2D" parent="Ferris-wheelWheel/Booth2/RigidBody2D"]
+position = Vector2(-0.499985, 19.5)
+texture = ExtResource("3_ou3ds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth2/RigidBody2D"]
+position = Vector2(-0.999822, 33.9995)
+rotation = 1.57079
+shape = SubResource("CircleShape2D_lkmlt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth2/RigidBody2D"]
+position = Vector2(-0.999954, 4.99946)
+shape = SubResource("RectangleShape2D_ovkf7")
+
+[node name="Booth3" type="Node2D" parent="Ferris-wheelWheel"]
+position = Vector2(-86.5, -92.5)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Ferris-wheelWheel/Booth3"]
+position = Vector2(-0.499985, -0.499985)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ferris-wheelWheel/Booth3"]
+position = Vector2(-1.00002, -1.99998)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth3/StaticBody2D"]
+shape = SubResource("CircleShape2D_kh7jg")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Ferris-wheelWheel/Booth3"]
+position = Vector2(-1, -3)
+collision_layer = 128
+collision_mask = 0
+
+[node name="FerrisWheelBooth" type="Sprite2D" parent="Ferris-wheelWheel/Booth3/RigidBody2D"]
+position = Vector2(-0.499985, 19.5)
+texture = ExtResource("2_5rwen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth3/RigidBody2D"]
+position = Vector2(-2.00028, 34.0004)
+rotation = 1.57079
+shape = SubResource("CircleShape2D_lkmlt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth3/RigidBody2D"]
+position = Vector2(-1.00043, 7.00018)
+shape = SubResource("RectangleShape2D_ovkf7")
+
+[node name="Booth4" type="Node2D" parent="Ferris-wheelWheel"]
+position = Vector2(-127.5, -4.49998)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Ferris-wheelWheel/Booth4"]
+position = Vector2(-0.499985, -0.499985)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ferris-wheelWheel/Booth4"]
+position = Vector2(220, 116)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth4/StaticBody2D"]
+position = Vector2(-220, -116)
+shape = SubResource("CircleShape2D_kh7jg")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Ferris-wheelWheel/Booth4"]
+position = Vector2(-1, -3)
+collision_layer = 128
+collision_mask = 0
+
+[node name="FerrisWheelBoothPerson" type="Sprite2D" parent="Ferris-wheelWheel/Booth4/RigidBody2D"]
+position = Vector2(1.00002, 22)
+texture = ExtResource("3_mb0qk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth4/RigidBody2D"]
+position = Vector2(-0.999771, 55.0006)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_wtyib")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ferris-wheelWheel/Booth4/RigidBody2D"]
+position = Vector2(0.999983, 8.00054)
+shape = SubResource("RectangleShape2D_ovkf7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iu2qg")
+}
+autoplay = "spin"
+
+[node name="Ferris-wheelSpine" type="Sprite2D" parent="."]
+position = Vector2(0.000348378, 78)
+texture = ExtResource("3_cap3g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_12h60")

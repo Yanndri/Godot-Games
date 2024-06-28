@@ -1,15 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgwmxtrunvd3k"]
+[gd_scene load_steps=7 format=3 uid="uid://cgwmxtrunvd3k"]
 
 [ext_resource type="Script" path="res://Player/bullet.gd" id="1_g8ifc"]
 [ext_resource type="Texture2D" uid="uid://hp4apwpjwvwd" path="res://Art/Zombeez Assets/bullets/bullet_1_1.png" id="2_6uc2p"]
 [ext_resource type="PackedScene" uid="uid://c68hi8d54vu36" path="res://Graphics and UI/trail_effect.tscn" id="3_xddle"]
+[ext_resource type="Texture2D" uid="uid://bdmnl0x3w5n7p" path="res://Art/light.png" id="5_gfvg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bd6x"]
 size = Vector2(6, 4)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_24ccp"]
+blend_mode = 1
+
 [node name="Bullet" type="RigidBody2D" groups=["attack", "bullet"]]
-collision_layer = 4
-collision_mask = 0
+z_index = 100
+collision_layer = 0
+collision_mask = 40
 gravity_scale = 0.0
 script = ExtResource("1_g8ifc")
 
@@ -27,3 +32,16 @@ texture = ExtResource("2_6uc2p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2bd6x")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.03, 0.03)
+color = Color(1, 0.611765, 0, 0.533333)
+energy = 4.69
+texture = ExtResource("5_gfvg7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0.611765, 0, 0.533333)
+material = SubResource("CanvasItemMaterial_24ccp")
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("5_gfvg7")

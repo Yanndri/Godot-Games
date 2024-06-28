@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ho3lva5026aa"]
+
+[sub_resource type="GDScript" id="GDScript_bruvr"]
+script/source = "extends Resource
+
+@export var MAX_HEALTH :int = 100 # max health of the enemy
+@export var HEALTH : int = 100 # current health of the enemy
+@export var SPEED : int = 100 # movement speed of enemy
+@export var JUMP_VELOCITY : int = 300 # jump height of enemy
+@export var ARMOR : float = 1.1 # damage taken is divided by armor
+@export var melee_damage : int = 10 # melee attack damage
+@export var melee_knockback : int = 1 # melee knockback distance
+@export var projectile_damage : int = 10 # damage of projectiles
+@export var projectile_speed :int = 300 # speed of the projectile
+@export var knockback_resistance :int = 1 # knockback resistance
+
+"
+
+[resource]
+resource_local_to_scene = true
+script = SubResource("GDScript_bruvr")
+MAX_HEALTH = 80
+HEALTH = 80
+SPEED = 30
+JUMP_VELOCITY = 300
+ARMOR = 1.0
+melee_damage = 25
+melee_knockback = 1
+projectile_damage = 10
+projectile_speed = 300
+knockback_resistance = 1

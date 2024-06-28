@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfcyn0ry2a8u0"]
+
+[ext_resource type="Theme" uid="uid://03asy68rfoqm" path="res://Resources/MenuTheme_v1.tres" id="1_hesp1"]
+[ext_resource type="Material" uid="uid://bj85cxxs0ducq" path="res://Resources/smooth_pixel.tres" id="1_rtpai"]
+[ext_resource type="Script" path="res://Resources/RichTextEffects/nervous.gd" id="2_ainij"]
+[ext_resource type="Script" path="res://Methods/damage_label.gd" id="2_tf45a"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_d87t7"]
+script = ExtResource("2_ainij")
+
+[node name="RichTextLabel" type="RichTextLabel"]
+light_mask = 0
+material = ExtResource("1_rtpai")
+offset_left = -28.0
+offset_top = -10.0
+offset_right = 27.0
+offset_bottom = 11.0
+theme = ExtResource("1_hesp1")
+theme_override_colors/default_color = Color(1, 0.160784, 0.113725, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]100"
+fit_content = true
+scroll_active = false
+custom_effects = [SubResource("RichTextEffect_d87t7")]
+script = ExtResource("2_tf45a")

@@ -1,17 +1,63 @@
-[gd_scene load_steps=18 format=3 uid="uid://c5xg41upmh5x6"]
+[gd_scene load_steps=34 format=3 uid="uid://c5xg41upmh5x6"]
 
 [ext_resource type="Script" path="res://Enemies/zombie_gunner.gd" id="1_wf3o7"]
+[ext_resource type="Resource" uid="uid://c6aw70murvc24" path="res://Resources/Enemies_data/Gunner_Zombie.tres" id="2_03br0"]
 [ext_resource type="Texture2D" uid="uid://cpxj01poeiso7" path="res://Art/Zombeez Assets/zombies edited/zombie_gunner_walk-sheet.png" id="2_d6wh2"]
-[ext_resource type="Texture2D" uid="uid://du550v1oe8ijr" path="res://Art/Zombeez Assets/zombies edited/zombie_gunner_attack.png" id="2_h2hug"]
+[ext_resource type="Texture2D" uid="uid://culmrr4lpnl2y" path="res://Art/Zombeez Assets/zombies edited/flies_flying.png" id="2_i2ywh"]
+[ext_resource type="Material" uid="uid://bj85cxxs0ducq" path="res://Resources/smooth_pixel.tres" id="2_icvss"]
 [ext_resource type="Texture2D" uid="uid://ifq213j0k44r" path="res://Art/Zombeez Assets/zombies edited/zombie_gunner_hand.png" id="3_0c4k6"]
 [ext_resource type="Script" path="res://Enemies/drone_gun.gd" id="4_867kv"]
 [ext_resource type="PackedScene" uid="uid://dgwcty1fsydx8" path="res://Methods/attack.tscn" id="6_lnmmp"]
 [ext_resource type="PackedScene" uid="uid://c5fl0pqc66hjb" path="res://Methods/detection.tscn" id="7_1yn8l"]
+[ext_resource type="Texture2D" uid="uid://t6camc4v02pd" path="res://Art/Zombeez Assets/zombies edited/zombie_gunner_attack-sheet.png" id="7_ku0i8"]
 [ext_resource type="PackedScene" uid="uid://wplbjmfh4l3a" path="res://Methods/health.tscn" id="8_sqr5h"]
 [ext_resource type="Texture2D" uid="uid://cnbf6iat62va1" path="res://icon.svg" id="9_ccst0"]
+[ext_resource type="Resource" uid="uid://dcx1iqv53agcs" path="res://Resources/Guns_data/drone.tres" id="9_mpftt"]
+[ext_resource type="Texture2D" uid="uid://x1ofu7j22geb" path="res://Art/Zombeez Assets/zombies edited/zombie_gunner_death.png" id="9_upv2l"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="12_wfhwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isj6g"]
-size = Vector2(34, 57)
+size = Vector2(34, 55.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc5y4"]
+atlas = ExtResource("2_i2ywh")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2cw7"]
+atlas = ExtResource("2_i2ywh")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi67j"]
+atlas = ExtResource("2_i2ywh")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1856j"]
+atlas = ExtResource("2_i2ywh")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ympc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc5y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2cw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi67j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1856j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx2sg"]
+shader = ExtResource("12_wfhwe")
+shader_parameter/active = false
 
 [sub_resource type="Animation" id="Animation_e7t3h"]
 length = 0.001
@@ -63,10 +109,22 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1, 22)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fly:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, -27)]
+}
 
 [sub_resource type="Animation" id="Animation_k3jri"]
 resource_name = "attack"
-length = 0.2
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -78,7 +136,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -90,7 +148,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_h2hug")]
+"values": [ExtResource("7_ku0i8")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -99,10 +157,10 @@ tracks/2/path = NodePath("zombie_texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -111,16 +169,123 @@ tracks/3/path = NodePath("zombie_texture/drone_gun:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 22), Vector2(1, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_7nyyx"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("zombie_texture:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(1, 22)]
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("zombie_texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_upv2l")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("zombie_texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0608268, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("zombie_texture/drone_gun")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete_all"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("detection")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete_all"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("health")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete_all"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("fly:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-5, -27), Vector2(15, -17)]
 }
 
 [sub_resource type="Animation" id="Animation_t1xna"]
 resource_name = "walking"
 length = 0.8
-loop_mode = 1
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -156,7 +321,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [1, 2, 3, 0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -168,14 +333,77 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(1, 22), Vector2(2, 19), Vector2(3, 23), Vector2(0, 20)]
+"values": [Vector2(2, 20), Vector2(3, 24), Vector2(0, 20), Vector2(1, 22)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orbua"]
 _data = {
 "RESET": SubResource("Animation_e7t3h"),
 "attack": SubResource("Animation_k3jri"),
+"death": SubResource("Animation_7nyyx"),
 "walking": SubResource("Animation_t1xna")
+}
+
+[sub_resource type="Animation" id="Animation_qgdwa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../zombie_texture:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_wfhwe")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../zombie_texture:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_h1h7f"]
+resource_name = "hit"
+length = 0.03
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../zombie_texture:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_wfhwe")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../zombie_texture:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l53mg"]
+_data = {
+"RESET": SubResource("Animation_qgdwa"),
+"hit": SubResource("Animation_h1h7f")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_affb1"]
@@ -187,16 +415,27 @@ radius = 299.483
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4vbk"]
 radius = 507.001
 
-[node name="zombie_gunner" type="CharacterBody2D" node_paths=PackedStringArray("zombie_animation", "zombie_sprite")]
+[node name="zombie_gunner" type="CharacterBody2D" node_paths=PackedStringArray("zombie_animation", "hit_flash_effect", "zombie_sprite")]
+collision_layer = 0
+collision_mask = 128
 script = ExtResource("1_wf3o7")
 zombie_animation = NodePath("AnimationPlayer")
+hit_flash_effect = NodePath("AnimationPlayer/Hit_Flash_Effect")
 zombie_sprite = NodePath("zombie_texture")
+enemy_data = ExtResource("2_03br0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 3)
+position = Vector2(-7, 2.25)
 shape = SubResource("RectangleShape2D_isj6g")
 
+[node name="fly" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-5, -27)
+sprite_frames = SubResource("SpriteFrames_6ympc")
+autoplay = "default"
+
 [node name="zombie_texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cx2sg")
 position = Vector2(-7, -25)
 texture = ExtResource("2_d6wh2")
 flip_h = true
@@ -204,11 +443,14 @@ hframes = 4
 
 [node name="drone_gun" type="Sprite2D" parent="zombie_texture"]
 unique_name_in_owner = true
+material = ExtResource("2_icvss")
+use_parent_material = true
 position = Vector2(1, 22)
 texture = ExtResource("3_0c4k6")
 offset = Vector2(20, 0)
 flip_h = true
 script = ExtResource("4_867kv")
+drone = ExtResource("9_mpftt")
 
 [node name="barrel" type="Marker2D" parent="zombie_texture/drone_gun"]
 position = Vector2(39, 0)
@@ -216,15 +458,30 @@ position = Vector2(39, 0)
 [node name="bullets" type="Marker2D" parent="zombie_texture/drone_gun/barrel"]
 top_level = true
 
+[node name="aim_direction" type="Marker2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(2, -25)
+
+[node name="Icon" type="Sprite2D" parent="aim_direction"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_ccst0")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_orbua")
 }
 autoplay = "walking"
 
+[node name="Hit_Flash_Effect" type="AnimationPlayer" parent="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_l53mg")
+}
+
 [node name="attack" parent="." instance=ExtResource("6_lnmmp")]
 unique_name_in_owner = true
 position = Vector2(15, -25)
+damage = 15
 
 [node name="area_attack" parent="attack" index="0"]
 visible = false
@@ -252,13 +509,7 @@ shape = SubResource("CircleShape2D_y4vbk")
 unique_name_in_owner = true
 position = Vector2(-9, -13)
 
-[node name="aim_direction" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(2, -25)
-
-[node name="Icon" type="Sprite2D" parent="aim_direction"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("9_ccst0")
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 
 [editable path="attack"]
 [editable path="detection"]

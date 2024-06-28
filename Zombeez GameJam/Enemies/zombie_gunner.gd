@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 @export var zombie_animation : AnimationPlayer
+@export var hit_flash_effect : AnimationPlayer
 @export var zombie_sprite : Sprite2D
+@export var enemy_data : Resource
 
 const SPEED = 20.0
 const JUMP_VELOCITY = -400.0
@@ -37,7 +39,7 @@ func _process(_delta):
 				velocity.x = 0
 				get_node("%drone_gun").shoot()
 				zombie_animation.play("attack")
-				rate_of_fire.wait_time = 3
+				rate_of_fire.wait_time = 3 + randf_range(-2, 2)
 				rate_of_fire.start()
 		if attacking_player:
 			velocity.x = 0
@@ -47,9 +49,9 @@ func _process(_delta):
 
 func movement(target_pos):
 	if target_pos > 0:
-		velocity.x = SPEED
+		velocity.x = enemy_data.SPEED
 	elif target_pos < 0:
-		velocity.x = -SPEED
+		velocity.x = -enemy_data.SPEED
 
 func player_is_detected(body, TrueOrFalse):
 	player_body = body
@@ -58,12 +60,21 @@ func player_is_detected(body, TrueOrFalse):
 
 func attack(TrueOrFalse):
 	attacking_player = TrueOrFalse
-	print("attacking player")
+	#print("attacking player")
 
 func dealt_damage():
-	print("damaged player")
+	pass
+	#print("damaged player")
 
-func took_damage(_damage):
+func took_damage(damage):
+	damage = floor(damage / enemy_data.ARMOR)
+	enemy_data.HEALTH -= damage
+	hit_flash_effect.play("hit")
+	if enemy_data.HEALTH <= 0:
+		death()
+	return damage
+
+func death():
 	pass
 
 func change_facing_direction():

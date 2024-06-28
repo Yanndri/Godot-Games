@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cnnxlw5mlh3kb"]
+
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="1_ma6up"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_ma6up")
+shader_parameter/active = false

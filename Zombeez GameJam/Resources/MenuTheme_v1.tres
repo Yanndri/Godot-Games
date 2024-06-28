@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://03asy68rfoqm"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://03asy68rfoqm"]
 
 [ext_resource type="FontFile" uid="uid://b78l8orcsllme" path="res://Resources/MunroSmall.ttf" id="1_rptls"]
 
@@ -15,9 +15,19 @@ texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dymoe"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_honr5"]
 region_rect = Rect2(0, 0, 96, 96)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_porbd"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
 
 [resource]
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -29,7 +39,10 @@ Button/styles/hover = SubResource("StyleBoxTexture_lq3yj")
 Button/styles/normal = SubResource("StyleBoxTexture_vwgok")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 5
-Label/font_sizes/font_size = 10
+Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_rptls")
 Label/styles/normal = SubResource("StyleBoxEmpty_dymoe")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_honr5")
+RichTextLabel/font_sizes/normal_font_size = 25
+RichTextLabel/fonts/normal_font = ExtResource("1_rptls")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_porbd")

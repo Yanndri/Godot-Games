@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://wplbjmfh4l3a"]
+[gd_scene load_steps=4 format=3 uid="uid://wplbjmfh4l3a"]
 
 [ext_resource type="Script" path="res://Methods/health.gd" id="1_dtf2o"]
+[ext_resource type="PackedScene" uid="uid://dfcyn0ry2a8u0" path="res://Methods/damage_label.tscn" id="2_xu1s0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7dob"]
 size = Vector2(41, 58)
 
 [node name="health" type="Node2D"]
-z_index = -100
+z_index = 100
 script = ExtResource("1_dtf2o")
+damage_label_scene = ExtResource("2_xu1s0")
 
 [node name="detect_attacks" type="Area2D" parent="."]
 collision_layer = 0
