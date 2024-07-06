@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://byaat1vmwqody"]
+
+[ext_resource type="Script" path="res://resources/creature_data_script.gd" id="1_gr8yw"]
+[ext_resource type="Texture2D" uid="uid://51qxaw3wjc76" path="res://Art/Frogv1.png" id="1_yrqet"]
+
+[resource]
+script = ExtResource("1_gr8yw")
+name = "Frog"
+texture = ExtResource("1_yrqet")
+skills = "Jump"
+area = "Water & Land"
+can_swim = true

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://djyavyjfgxpys"]
+
+[ext_resource type="Texture2D" uid="uid://bhe5g1yqkib36" path="res://Art/Dinov1.png" id="1_vt3np"]
+[ext_resource type="Script" path="res://resources/creature_data_script.gd" id="1_yyaob"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_yyaob")
+name = "Dino"
+texture = ExtResource("1_vt3np")
+skills = "Massive"
+area = "Land"
+can_swim = false

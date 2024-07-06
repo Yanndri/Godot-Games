@@ -1,0 +1,354 @@
+[gd_scene load_steps=22 format=3 uid="uid://byivreqx4316i"]
+
+[ext_resource type="Texture2D" uid="uid://bhe5g1yqkib36" path="res://Art/Dinov1.png" id="1_wfjkt"]
+[ext_resource type="Texture2D" uid="uid://51qxaw3wjc76" path="res://Art/Frogv1.png" id="2_4jirn"]
+[ext_resource type="Script" path="res://Methods/Choices.gd" id="2_g7yil"]
+[ext_resource type="Theme" uid="uid://dtee4pl7jtk3c" path="res://resources/Choices.tres" id="2_rr1j8"]
+[ext_resource type="ButtonGroup" uid="uid://mqmtb17jf1cc" path="res://resources/choices_button_group.tres" id="3_0bqy1"]
+[ext_resource type="Script" path="res://Methods/Option.gd" id="3_6pulv"]
+[ext_resource type="Texture2D" uid="uid://dqdooaen87muj" path="res://Art/Birdv1.png" id="3_b0hiq"]
+[ext_resource type="Script" path="res://RichTextEffects/colormod.gd" id="5_s5ruf"]
+[ext_resource type="Texture2D" uid="uid://c3aqrnrf8x217" path="res://Art/evolutionIcon.png" id="8_tsjcn"]
+[ext_resource type="Script" path="res://RichTextEffects/heart.gd" id="9_laoeo"]
+[ext_resource type="Script" path="res://RichTextEffects/nervous.gd" id="11_iftj3"]
+[ext_resource type="Texture2D" uid="uid://ofs8uc1e4isd" path="res://Art/Disaster_Flood.png" id="12_beafh"]
+[ext_resource type="Texture2D" uid="uid://btsdylpp0cpeg" path="res://Art/Disaster_Lava.png" id="13_0iqix"]
+[ext_resource type="Texture2D" uid="uid://ds8q35yh4sxjx" path="res://Art/Disaster_Asteroids.png" id="14_ti1b3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jco3t"]
+size = Vector2(11, 10)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_p0aiu"]
+script = ExtResource("5_s5ruf")
+
+[sub_resource type="FontVariation" id="FontVariation_e81be"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_uellv"]
+script = ExtResource("5_s5ruf")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_38hyt"]
+script = ExtResource("5_s5ruf")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_knv6x"]
+script = ExtResource("9_laoeo")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_cs2a6"]
+script = ExtResource("11_iftj3")
+
+[node name="Main" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_jco3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_wfjkt")
+
+[node name="Pick GUI" type="CanvasLayer" parent="."]
+layer = 111
+visible = false
+
+[node name="Choices" type="Control" parent="Pick GUI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_g7yil")
+button_options = ExtResource("3_0bqy1")
+
+[node name="PanelContainer" type="PanelContainer" parent="Pick GUI/Choices"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -102.0
+offset_right = 162.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_rr1j8")
+
+[node name="Options" type="HBoxContainer" parent="Pick GUI/Choices/PanelContainer"]
+layout_mode = 2
+
+[node name="Option 1" type="PanelContainer" parent="Pick GUI/Choices/PanelContainer/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_6pulv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pick GUI/Choices/PanelContainer/Options/Option 1"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Pick GUI/Choices/PanelContainer/Options/Option 1/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_wfjkt")
+expand_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pick GUI/Choices/PanelContainer/Options/Option 1/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Dino
+"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_p0aiu")]
+
+[node name="Description" type="RichTextLabel" parent="Pick GUI/Choices/PanelContainer/Options/Option 1/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_e81be")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]Skills: Massive
+Area: Land
+"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_p0aiu")]
+
+[node name="Button_1" type="Button" parent="Pick GUI/Choices/PanelContainer/Options/Option 1/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_0bqy1")
+text = "CHOOSE"
+
+[node name="Option 2" type="PanelContainer" parent="Pick GUI/Choices/PanelContainer/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_6pulv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pick GUI/Choices/PanelContainer/Options/Option 2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Pick GUI/Choices/PanelContainer/Options/Option 2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_4jirn")
+expand_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pick GUI/Choices/PanelContainer/Options/Option 2/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Frog"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_uellv")]
+
+[node name="Description" type="RichTextLabel" parent="Pick GUI/Choices/PanelContainer/Options/Option 2/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_e81be")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]Skills: Massive
+Area: Land
+"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_p0aiu")]
+
+[node name="Button_2" type="Button" parent="Pick GUI/Choices/PanelContainer/Options/Option 2/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_0bqy1")
+text = "CHOOSE"
+
+[node name="Option 3" type="PanelContainer" parent="Pick GUI/Choices/PanelContainer/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_6pulv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pick GUI/Choices/PanelContainer/Options/Option 3"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Pick GUI/Choices/PanelContainer/Options/Option 3/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_b0hiq")
+expand_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pick GUI/Choices/PanelContainer/Options/Option 3/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Bird
+"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_38hyt")]
+
+[node name="Description" type="RichTextLabel" parent="Pick GUI/Choices/PanelContainer/Options/Option 3/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_e81be")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]Skills: Massive
+Area: Land
+"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_p0aiu")]
+
+[node name="Button_3" type="Button" parent="Pick GUI/Choices/PanelContainer/Options/Option 3/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_0bqy1")
+text = "CHOOSE"
+
+[node name="Evolution Points" type="Control" parent="Pick GUI"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -49.0
+offset_right = 55.0
+offset_bottom = -9.0
+grow_vertical = 0
+theme = ExtResource("2_rr1j8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pick GUI/Evolution Points"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Pick GUI/Evolution Points/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_tsjcn")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Pick GUI/Evolution Points/HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Evolution Points: "
+fit_content = true
+
+[node name="Count" type="RichTextLabel" parent="Pick GUI/Evolution Points/HBoxContainer"]
+custom_minimum_size = Vector2(100, 45)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "
+[heart]1"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_knv6x")]
+
+[node name="Disasters Display" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="Disasters Display"]
+custom_minimum_size = Vector2(400, 80)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -204.0
+offset_top = 14.0
+offset_right = 204.0
+offset_bottom = 252.0
+grow_horizontal = 2
+theme = ExtResource("2_rr1j8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Disasters Display/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Disasters Display/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Disasters Display/PanelContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Disasters Display/PanelContainer/HBoxContainer/PanelContainer/VBoxContainer2"]
+layout_mode = 2
+bbcode_enabled = true
+text = " 
+[center] CENTURY "
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Disasters Display/PanelContainer/HBoxContainer/PanelContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(20, 200)
+layout_mode = 2
+bbcode_enabled = true
+text = " [center]Year
+333
+
+
+Year
+666
+
+
+Year
+999"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Disasters Display/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center][nervous]DISASTERS"
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_cs2a6")]
+
+[node name="Disaster_1" type="PanelContainer" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer/Disaster_1"]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+texture = ExtResource("12_beafh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer/Disaster_1"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Flood
+"
+fit_content = true
+
+[node name="Disaster_2" type="PanelContainer" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer/Disaster_2"]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+texture = ExtResource("13_0iqix")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer/Disaster_2"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Lava
+
+"
+fit_content = true
+
+[node name="Disaster_3" type="PanelContainer" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer/Disaster_3"]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+texture = ExtResource("14_ti1b3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Disasters Display/PanelContainer/HBoxContainer/VBoxContainer/Disaster_3"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Asteroids
+
+"
+fit_content = true

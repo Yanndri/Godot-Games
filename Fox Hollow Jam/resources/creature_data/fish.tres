@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ctr6d07mfram8"]
+
+[ext_resource type="Texture2D" uid="uid://b7t7yxpl635y2" path="res://Art/Fishv1.png" id="1_bqcex"]
+[ext_resource type="Script" path="res://resources/creature_data_script.gd" id="1_x28o3"]
+
+[resource]
+script = ExtResource("1_x28o3")
+name = "Fish"
+texture = ExtResource("1_bqcex")
+skills = "Fast"
+area = "Water"
+can_swim = false
