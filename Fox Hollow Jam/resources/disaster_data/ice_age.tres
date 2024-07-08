@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dwts7bof8yv3w"]
+
+[ext_resource type="Script" path="res://resources/disaster_data_script.gd" id="1_vw6ij"]
+[ext_resource type="Texture2D" uid="uid://ban3htaqb65td" path="res://Art/Disaster_Ice_Age.png" id="2_cfkmt"]
+
+[resource]
+script = ExtResource("1_vw6ij")
+texture = ExtResource("2_cfkmt")
+name = "Ice Age"
+can_swim = false
+can_fly = false
+is_strong = false
+is_fast = false
+cold_resistant = true
+heat_resistant = false
+freeze_immune = true
+lava_immune = false
+low_appetite = true

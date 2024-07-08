@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c712tlwo1gddn"]
+
+[ext_resource type="Script" path="res://resources/disaster_data_script.gd" id="1_lwp56"]
+[ext_resource type="Texture2D" uid="uid://ofs8uc1e4isd" path="res://Art/Disaster_Flood.png" id="2_vlrxj"]
+
+[resource]
+script = ExtResource("1_lwp56")
+texture = ExtResource("2_vlrxj")
+name = "Flood"
+can_swim = true
+can_fly = true
+is_strong = false
+is_fast = false
+cold_resistant = false
+heat_resistant = false
+freeze_immune = false
+lava_immune = false
+low_appetite = false

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cqokrtesf5oqo"]
+
+[ext_resource type="Script" path="res://resources/disaster_data_script.gd" id="1_jqkiw"]
+[ext_resource type="Texture2D" uid="uid://cnch74fio3fyv" path="res://Art/Disaster_Super_Storm.png" id="2_mss2t"]
+
+[resource]
+script = ExtResource("1_jqkiw")
+texture = ExtResource("2_mss2t")
+name = "Super Storm"
+can_swim = false
+can_fly = false
+is_strong = true
+is_fast = false
+cold_resistant = true
+heat_resistant = false
+freeze_immune = false
+lava_immune = false
+low_appetite = false

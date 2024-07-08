@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cxsjlcjyjrcjs"]
+
+[ext_resource type="Script" path="res://resources/disaster_data_script.gd" id="1_nh08g"]
+[ext_resource type="Texture2D" uid="uid://k61f22kn3qmp" path="res://Art/Disaster_Surival_of_the_Fittest.png" id="2_d6kc0"]
+
+[resource]
+script = ExtResource("1_nh08g")
+texture = ExtResource("2_d6kc0")
+name = "Survival of the Fittest"
+can_swim = false
+can_fly = false
+is_strong = true
+is_fast = false
+cold_resistant = false
+heat_resistant = false
+freeze_immune = false
+lava_immune = false
+low_appetite = false

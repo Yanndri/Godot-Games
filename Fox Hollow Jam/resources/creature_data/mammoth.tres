@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cb3ng11vm6so4"]
+
+[ext_resource type="Script" path="res://resources/creature_data_script.gd" id="1_81rja"]
+[ext_resource type="Texture2D" uid="uid://be04ni3lnmdw5" path="res://Art/mamotth.png" id="2_hlv2q"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_81rja")
+name = "Mammoth"
+texture = ExtResource("2_hlv2q")
+skills = "Thick Fur"
+area = "Land"
+can_swim = false
+can_fly = false
+is_strong = true
+cold_resistant = true
+heat_resistant = false
+is_fast = false
+freeze_immune = true
+lava_immune = false
+low_appetite = false

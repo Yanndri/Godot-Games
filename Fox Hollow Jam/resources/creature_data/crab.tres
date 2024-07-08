@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d17ya6klceiid"]
+
+[ext_resource type="Script" path="res://resources/creature_data_script.gd" id="1_ic5kx"]
+[ext_resource type="Texture2D" uid="uid://c2pu72brt83fo" path="res://Art/crab.png" id="2_4wxky"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_ic5kx")
+name = "Crab"
+texture = ExtResource("2_4wxky")
+skills = "Resilient"
+area = "Water"
+can_swim = true
+can_fly = false
+is_strong = false
+cold_resistant = false
+heat_resistant = false
+is_fast = false
+freeze_immune = false
+lava_immune = false
+low_appetite = true

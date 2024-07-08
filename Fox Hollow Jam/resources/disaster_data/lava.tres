@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c2qlkfdaejnoh"]
+
+[ext_resource type="Script" path="res://resources/disaster_data_script.gd" id="1_rlgt8"]
+[ext_resource type="Texture2D" uid="uid://btsdylpp0cpeg" path="res://Art/Disaster_Lava.png" id="2_gj0fv"]
+
+[resource]
+script = ExtResource("1_rlgt8")
+texture = ExtResource("2_gj0fv")
+name = "Lava"
+can_swim = false
+can_fly = true
+is_strong = false
+is_fast = true
+cold_resistant = false
+heat_resistant = false
+freeze_immune = false
+lava_immune = true
+low_appetite = false

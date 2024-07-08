@@ -1,14 +1,18 @@
 extends Control
 
-@onready var option1 = get_node("%Option 1")
-@onready var option2 = get_node("%Option 2")
-@onready var option3 = get_node("%Option 3")
+@export var option1 : PanelContainer
+@export var option2 : PanelContainer
+@export var option3 : PanelContainer
+@export var reroll : Button
+@export var confirm : Button
+@export var Simulation : CanvasLayer
 
 @export var button_options : ButtonGroup
 
 var option1_value = 0; var option2_value = 0; var option3_value = 0;
 
 var creature_data = []
+var creature_chose : Resource
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,8 +64,27 @@ func _process(delta):
 		var split_text = pressed_button.split(':') # splits texts that has ':' in between
 		var button_method = str(split_text[0]) # access the first splitted text
 		if button_method == "Button_1":
-			print(creature_data[option1_value].name)
+			creature_chose = creature_data[option1_value]
 		elif button_method == "Button_2":
-			print(creature_data[option2_value].name)
+			creature_chose = creature_data[option2_value]
 		elif button_method == "Button_3":
-			print(creature_data[option3_value].name)
+			creature_chose = creature_data[option3_value]
+		confirm.disabled = false
+	else:
+		confirm.disabled = true
+	
+	if Counts.evolution_points <= 1:
+		reroll.disabled = true
+	else:
+		reroll.disabled = false
+
+func _on_confirm_pressed():
+	print("Confirm :", creature_chose.name)
+	Simulation.creature(creature_chose)
+
+func _on_reroll_pressed():
+	change_options()
+	Counts.evolution_points -= 1
+
+func return_creature_chose():
+	return creature_chose

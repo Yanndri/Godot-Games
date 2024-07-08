@@ -7,6 +7,14 @@
 script = ExtResource("1_gr8yw")
 name = "Frog"
 texture = ExtResource("1_yrqet")
-skills = "Jump"
+skills = "Amphibian"
 area = "Water & Land"
 can_swim = true
+can_fly = false
+is_strong = false
+cold_resistant = true
+heat_resistant = true
+is_fast = false
+freeze_immune = false
+lava_immune = false
+low_appetite = true
