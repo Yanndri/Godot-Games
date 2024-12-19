@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b5d4swhfi7lxa"]
+
+[ext_resource type="Shader" path="res://Resources/Hit.gdshader" id="1_3040d"]
+
+[resource]
+shader = ExtResource("1_3040d")
+shader_parameter/color_override = Color(1, 1, 1, 1)
+shader_parameter/blend_delta = 0.0

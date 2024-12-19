@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://rgr4xffd2tsv"]
+
+[ext_resource type="FontFile" uid="uid://3pn2vnk8baj3" path="res://textFonts/alagard.ttf" id="1_01j4h"]
+[ext_resource type="FontFile" uid="uid://btcvqtaurmk3j" path="res://textFonts/Paul Jackson_personal use.ttf" id="2_jarfh"]
+[ext_resource type="FontFile" uid="uid://4xuitecsv5cs" path="res://textFonts/feltful_regular.otf" id="3_jf136"]
+[ext_resource type="FontFile" uid="uid://qnmlkj13ea8b" path="res://textFonts/Go around the books 2022.ttf" id="4_qqeuj"]
+[ext_resource type="FontFile" uid="uid://dpyrdlnsbx1qq" path="res://textFonts/CFSecondSonSchoolPERSONAL-R.ttf" id="5_kjtpb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx6hm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rf0gd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y48ys"]
+bg_color = Color(0.4, 0.262745, 0.262745, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+expand_margin_left = 10.0
+expand_margin_top = 6.0
+expand_margin_right = 10.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgycr"]
+bg_color = Color(0.231373, 0.188235, 0.188235, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqnnd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg3yg"]
+bg_color = Color(0.05, 0.05, 0.05, 0.705882)
+
+[resource]
+Button/fonts/font = ExtResource("1_01j4h")
+Button/styles/disabled = SubResource("StyleBoxEmpty_kx6hm")
+Button/styles/focus = SubResource("StyleBoxEmpty_rf0gd")
+Button/styles/hover = SubResource("StyleBoxFlat_y48ys")
+Button/styles/normal = SubResource("StyleBoxFlat_wgycr")
+Button/styles/pressed = SubResource("StyleBoxEmpty_eqnnd")
+Panel/styles/panel = SubResource("StyleBoxFlat_mg3yg")
+RichTextLabel/colors/default_color = Color(1, 0.941176, 0.819608, 1)
+RichTextLabel/fonts/bold_font = ExtResource("1_01j4h")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_jarfh")
+RichTextLabel/fonts/italics_font = ExtResource("3_jf136")
+RichTextLabel/fonts/mono_font = ExtResource("4_qqeuj")
+RichTextLabel/fonts/normal_font = ExtResource("5_kjtpb")

@@ -1,0 +1,34 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://byc2lrk87u4vt"
+path="res://.godot/imported/Compass Book.otf-78fb11d739e42c9e8f00c06081a1a446.fontdata"
+
+[deps]
+
+source_file="res://textFonts/Compass Book.otf"
+dest_files=["res://.godot/imported/Compass Book.otf-78fb11d739e42c9e8f00c06081a1a446.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

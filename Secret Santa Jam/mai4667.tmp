@@ -1,0 +1,507 @@
+[gd_scene load_steps=30 format=3 uid="uid://d0ey5b4ybvpnq"]
+
+[ext_resource type="Texture2D" uid="uid://btmjtasoqo7kv" path="res://Art/Dollar.png" id="1_0kauk"]
+[ext_resource type="Script" path="res://scripts/stats.gd" id="1_oux0b"]
+[ext_resource type="Texture2D" uid="uid://cxnonsyl1eh3u" path="res://Art/cathappy.png" id="1_shhvp"]
+[ext_resource type="Theme" uid="uid://rgr4xffd2tsv" path="res://Resources/Dialogue.tres" id="1_xnv6x"]
+[ext_resource type="Script" path="res://scripts/event&options_root.gd" id="4_0nm81"]
+[ext_resource type="Script" path="res://scripts/event.gd" id="4_4k6fd"]
+[ext_resource type="FontFile" uid="uid://3pn2vnk8baj3" path="res://textFonts/alagard.ttf" id="4_phy2r"]
+[ext_resource type="Texture2D" uid="uid://b4vwl0jjc6cb7" path="res://Art/catsad.png" id="4_qt6sk"]
+[ext_resource type="Script" path="res://scripts/options.gd" id="6_wf2qg"]
+[ext_resource type="Texture2D" uid="uid://b02up05qw6uhm" path="res://Art/Paper.png" id="9_qmn80"]
+[ext_resource type="Material" uid="uid://b5d4swhfi7lxa" path="res://Resources/DialogeMaterial.tres" id="11_6fwjr"]
+[ext_resource type="Texture2D" uid="uid://4gdcoxk4hu6d" path="res://Art/Clock.png" id="11_kf6mu"]
+[ext_resource type="Texture2D" uid="uid://ce4heo63y1g02" path="res://Art/Sad.png" id="11_wgouo"]
+[ext_resource type="Script" path="res://scripts/show_info.gd" id="12_kjuny"]
+[ext_resource type="Script" path="res://scripts/display_information.gd" id="12_n1sh8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo3tq"]
+bg_color = Color(0.4, 0.262745, 0.262745, 1)
+
+[sub_resource type="Gradient" id="Gradient_anaqc"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(0.231373, 0.188235, 0.188235, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kko3m"]
+gradient = SubResource("Gradient_anaqc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_2gn8e"]
+offsets = PackedFloat32Array(0.598592, 0.612676)
+colors = PackedColorArray(0.47451, 0.341176, 0.341176, 1, 0.47, 0.3384, 0.3384, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uygys"]
+gradient = SubResource("Gradient_2gn8e")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bha6e"]
+bg_color = Color(0.231373, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4jv5j"]
+texture = ExtResource("9_qmn80")
+
+[sub_resource type="Gradient" id="Gradient_72ucs"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.633803)
+colors = PackedColorArray(0.47451, 0.341176, 0.341176, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1hvc1"]
+gradient = SubResource("Gradient_72ucs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iktmc"]
+bg_color = Color(0.05, 0.05, 0.05, 0.823529)
+
+[sub_resource type="Gradient" id="Gradient_yram8"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(0.231373, 0.188235, 0.188235, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o4d8j"]
+gradient = SubResource("Gradient_yram8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_i2tpo"]
+offsets = PackedFloat32Array(0.598592, 0.612676)
+colors = PackedColorArray(0.47451, 0.341176, 0.341176, 1, 0.47, 0.3384, 0.3384, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g3pp5"]
+gradient = SubResource("Gradient_i2tpo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Main" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(540, 960)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Stats" type="Panel" parent="Control" node_paths=PackedStringArray("Love", "Happiness", "Wealth", "Clock")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -480.0
+offset_right = 270.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xnv6x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo3tq")
+script = ExtResource("1_oux0b")
+Love = NodePath("VBoxContainer/Stats/Love/Love")
+Happiness = NodePath("VBoxContainer/Stats/Happiness/Happiness")
+Wealth = NodePath("VBoxContainer/Stats/Wealth/Wealth")
+Clock = NodePath("VBoxContainer/Event&OptionsRoot/Clock")
+statShaderMaterial = ExtResource("11_6fwjr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Stats"]
+layout_mode = 0
+offset_top = 75.0
+offset_right = 540.0
+offset_bottom = 960.0
+
+[node name="Stats" type="HBoxContainer" parent="Control/Stats/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 41
+
+[node name="Love" type="VBoxContainer" parent="Control/Stats/VBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="Love" type="TextureProgressBar" parent="Control/Stats/VBoxContainer/Stats/Love"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 18.0
+fill_mode = 3
+texture_under = SubResource("GradientTexture2D_kko3m")
+texture_over = ExtResource("4_qt6sk")
+texture_progress = SubResource("GradientTexture2D_uygys")
+
+[node name="showInfo" type="Button" parent="Control/Stats/VBoxContainer/Stats/Love/Love" node_paths=PackedStringArray("displayInformationPanel")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
+script = ExtResource("12_kjuny")
+displayInformationPanel = NodePath("../../../../../../DisplayInformation")
+
+[node name="CatName" type="RichTextLabel" parent="Control/Stats/VBoxContainer/Stats/Love"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]Kitten: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+
+[node name="Happiness" type="VBoxContainer" parent="Control/Stats/VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Happiness" type="TextureProgressBar" parent="Control/Stats/VBoxContainer/Stats/Happiness"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 3
+texture_under = SubResource("GradientTexture2D_kko3m")
+texture_over = ExtResource("11_wgouo")
+texture_progress = SubResource("GradientTexture2D_uygys")
+
+[node name="showInfo" type="Button" parent="Control/Stats/VBoxContainer/Stats/Happiness/Happiness" node_paths=PackedStringArray("displayInformationPanel")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
+script = ExtResource("12_kjuny")
+displayInformationPanel = NodePath("../../../../../../DisplayInformation")
+
+[node name="Wealth" type="VBoxContainer" parent="Control/Stats/VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Wealth" type="TextureProgressBar" parent="Control/Stats/VBoxContainer/Stats/Wealth"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 52.0
+fill_mode = 3
+texture_under = SubResource("GradientTexture2D_kko3m")
+texture_over = ExtResource("1_0kauk")
+texture_progress = SubResource("GradientTexture2D_uygys")
+
+[node name="showInfo" type="Button" parent="Control/Stats/VBoxContainer/Stats/Wealth/Wealth" node_paths=PackedStringArray("displayInformationPanel")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
+script = ExtResource("12_kjuny")
+displayInformationPanel = NodePath("../../../../../../DisplayInformation")
+
+[node name="JobName" type="RichTextLabel" parent="Control/Stats/VBoxContainer/Stats/Wealth"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]Job: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+
+[node name="Event&OptionsRoot" type="Panel" parent="Control/Stats/VBoxContainer" node_paths=PackedStringArray("event", "options", "nameEdit", "catName", "jobName")]
+custom_minimum_size = Vector2(360, 640)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bha6e")
+script = ExtResource("4_0nm81")
+event = NodePath("Event")
+options = NodePath("Options")
+nameEdit = NodePath("Options/NameEdit")
+catName = NodePath("../Stats/Love/CatName")
+jobName = NodePath("../Stats/Wealth/JobName")
+
+[node name="Event" type="Panel" parent="Control/Stats/VBoxContainer/Event&OptionsRoot"]
+custom_minimum_size = Vector2(424, 564.571)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -282.284
+offset_right = 212.0
+offset_bottom = 282.286
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(424, 563.284)
+theme_override_styles/panel = SubResource("StyleBoxTexture_4jv5j")
+script = ExtResource("4_4k6fd")
+
+[node name="Image" type="TextureRect" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Event"]
+custom_minimum_size = Vector2(392, 532.571)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -250.286
+offset_right = 180.0
+offset_bottom = 250.286
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Event"]
+custom_minimum_size = Vector2(360, 305)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 16.0
+offset_right = 180.0
+offset_bottom = 354.0
+grow_horizontal = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[b][i]\"Meow, meow, meow.\"[/i][/b]
+You wake up to the soft cries of \"\"\" + GlobalVariables.kitten + \"\"\". She's curled up at the foot of the bed, her tiny body trembling. The memory of her mother crosses your mind. 
+She looks lost, unsure, and scared.
+
+[i]\"What should I do?\"[/i]"
+fit_content = true
+
+[node name="Options" type="Panel" parent="Control/Stats/VBoxContainer/Event&OptionsRoot" node_paths=PackedStringArray("option1", "option2", "option3", "nameEdit", "event_cooldown", "stats", "eventPanel")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.773438
+anchor_right = 1.0
+anchor_bottom = 0.773438
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_wf2qg")
+option1 = NodePath("VBox/Option1")
+option2 = NodePath("VBox/Option2")
+option3 = NodePath("VBox/Option3")
+nameEdit = NodePath("NameEdit")
+event_cooldown = NodePath("VBox/Event_cooldown")
+stats = NodePath("../../..")
+eventPanel = NodePath("../Event")
+metadata/_edit_use_anchors_ = true
+
+[node name="NameEdit" type="LineEdit" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -101.5
+offset_top = -134.285
+offset_right = 101.5
+offset_bottom = -103.285
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_phy2r")
+placeholder_text = "PoopShitter2000"
+alignment = 1
+max_length = 16
+clear_button_enabled = true
+
+[node name="VBox" type="VBoxContainer" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = -62.5
+offset_right = 67.5
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Option1" type="Button" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Options/VBox"]
+layout_mode = 2
+mouse_filter = 1
+text = "Comfort the kitten"
+
+[node name="Option2" type="Button" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Options/VBox"]
+layout_mode = 2
+mouse_filter = 1
+text = "Feed the kitten"
+
+[node name="Option3" type="Button" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Options/VBox"]
+layout_mode = 2
+mouse_filter = 1
+text = "Do Nothing
+"
+
+[node name="Event_cooldown" type="Timer" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Options/VBox"]
+one_shot = true
+
+[node name="Clock" type="TextureProgressBar" parent="Control/Stats/VBoxContainer/Event&OptionsRoot"]
+modulate = Color(0.97, 0.97, 0.97, 1)
+material = ExtResource("11_6fwjr")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 12.0
+value = 9.0
+fill_mode = 5
+texture_under = SubResource("GradientTexture2D_kko3m")
+texture_over = ExtResource("11_kf6mu")
+texture_progress = SubResource("GradientTexture2D_1hvc1")
+tint_over = Color(1, 1, 1, 0)
+
+[node name="showInfo" type="Button" parent="Control/Stats/VBoxContainer/Event&OptionsRoot/Clock" node_paths=PackedStringArray("displayInformationPanel")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
+script = ExtResource("12_kjuny")
+displayInformationPanel = NodePath("../../../../../DisplayInformation")
+
+[node name="Panel" type="Panel" parent="Control/Stats/VBoxContainer"]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+
+[node name="DisplayInformation" type="Panel" parent="Control" node_paths=PackedStringArray("statName", "statIcon", "information")]
+visible = false
+custom_minimum_size = Vector2(360, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -240.0
+offset_right = 180.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xnv6x")
+theme_override_styles/panel = SubResource("StyleBoxFlat_iktmc")
+script = ExtResource("12_n1sh8")
+statName = NodePath("Stat/StatName")
+statIcon = NodePath("Stat/StatIcon")
+information = NodePath("Information")
+
+[node name="Stat" type="VBoxContainer" parent="Control/DisplayInformation"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 85.0
+grow_horizontal = 2
+
+[node name="StatIcon" type="TextureProgressBar" parent="Control/DisplayInformation/Stat"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 3
+texture_under = SubResource("GradientTexture2D_o4d8j")
+texture_over = ExtResource("1_shhvp")
+texture_progress = SubResource("GradientTexture2D_g3pp5")
+
+[node name="StatName" type="RichTextLabel" parent="Control/DisplayInformation/Stat"]
+clip_contents = false
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][b]"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Information" type="RichTextLabel" parent="Control/DisplayInformation"]
+clip_contents = false
+custom_minimum_size = Vector2(304, 280)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -140.0
+offset_right = 152.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+fit_content = true
+
+[connection signal="pressed" from="Control/Stats/VBoxContainer/Stats/Love/Love/showInfo" to="Control/Stats/VBoxContainer/Stats/Love/Love/showInfo" method="_on_pressed"]
+[connection signal="pressed" from="Control/Stats/VBoxContainer/Stats/Happiness/Happiness/showInfo" to="Control/Stats/VBoxContainer/Stats/Happiness/Happiness/showInfo" method="_on_pressed"]
+[connection signal="pressed" from="Control/Stats/VBoxContainer/Stats/Wealth/Wealth/showInfo" to="Control/Stats/VBoxContainer/Stats/Wealth/Wealth/showInfo" method="_on_pressed"]
+[connection signal="mouse_entered" from="Control/Stats/VBoxContainer/Event&OptionsRoot/Event" to="Control/Stats/VBoxContainer/Event&OptionsRoot/Options" method="_on_event_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Stats/VBoxContainer/Event&OptionsRoot/Event" to="Control/Stats/VBoxContainer/Event&OptionsRoot/Options" method="_on_event_mouse_exited"]
+[connection signal="text_submitted" from="Control/Stats/VBoxContainer/Event&OptionsRoot/Options/NameEdit" to="Control/Stats/VBoxContainer/Event&OptionsRoot" method="_on_name_edit_text_submitted"]
+[connection signal="pressed" from="Control/Stats/VBoxContainer/Event&OptionsRoot/Options/VBox/Option1" to="Control/Stats/VBoxContainer/Event&OptionsRoot/Options" method="_on_option_1_pressed"]
+[connection signal="pressed" from="Control/Stats/VBoxContainer/Event&OptionsRoot/Options/VBox/Option2" to="Control/Stats/VBoxContainer/Event&OptionsRoot/Options" method="_on_option_2_pressed"]
+[connection signal="pressed" from="Control/Stats/VBoxContainer/Event&OptionsRoot/Options/VBox/Option3" to="Control/Stats/VBoxContainer/Event&OptionsRoot/Options" method="_on_option_3_pressed"]
+[connection signal="pressed" from="Control/Stats/VBoxContainer/Event&OptionsRoot/Clock/showInfo" to="Control/Stats/VBoxContainer/Event&OptionsRoot/Clock/showInfo" method="_on_pressed"]
